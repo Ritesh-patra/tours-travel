@@ -28,7 +28,7 @@
         !function (i, n) { var o, s, e; function c(e) { try { var t = { supportTests: e, timestamp: (new Date).valueOf() }; sessionStorage.setItem(o, JSON.stringify(t)) } catch (e) { } } function p(e, t, n) { e.clearRect(0, 0, e.canvas.width, e.canvas.height), e.fillText(t, 0, 0); var t = new Uint32Array(e.getImageData(0, 0, e.canvas.width, e.canvas.height).data), r = (e.clearRect(0, 0, e.canvas.width, e.canvas.height), e.fillText(n, 0, 0), new Uint32Array(e.getImageData(0, 0, e.canvas.width, e.canvas.height).data)); return t.every(function (e, t) { return e === r[t] }) } function u(e, t, n) { switch (t) { case "flag": return n(e, "\ud83c\udff3\ufe0f\u200d\u26a7\ufe0f", "\ud83c\udff3\ufe0f\u200b\u26a7\ufe0f") ? !1 : !n(e, "\ud83c\uddfa\ud83c\uddf3", "\ud83c\uddfa\u200b\ud83c\uddf3") && !n(e, "\ud83c\udff4\udb40\udc67\udb40\udc62\udb40\udc65\udb40\udc6e\udb40\udc67\udb40\udc7f", "\ud83c\udff4\u200b\udb40\udc67\u200b\udb40\udc62\u200b\udb40\udc65\u200b\udb40\udc6e\u200b\udb40\udc67\u200b\udb40\udc7f"); case "emoji": return !n(e, "\ud83d\udc26\u200d\u2b1b", "\ud83d\udc26\u200b\u2b1b") }return !1 } function f(e, t, n) { var r = "undefined" != typeof WorkerGlobalScope && self instanceof WorkerGlobalScope ? new OffscreenCanvas(300, 150) : i.createElement("canvas"), a = r.getContext("2d", { willReadFrequently: !0 }), o = (a.textBaseline = "top", a.font = "600 32px Arial", {}); return e.forEach(function (e) { o[e] = t(a, e, n) }), o } function t(e) { var t = i.createElement("script"); t.src = e, t.defer = !0, i.head.appendChild(t) } "undefined" != typeof Promise && (o = "wpEmojiSettingsSupports", s = ["flag", "emoji"], n.supports = { everything: !0, everythingExceptFlag: !0 }, e = new Promise(function (e) { i.addEventListener("DOMContentLoaded", e, { once: !0 }) }), new Promise(function (t) { var n = function () { try { var e = JSON.parse(sessionStorage.getItem(o)); if ("object" == typeof e && "number" == typeof e.timestamp && (new Date).valueOf() < e.timestamp + 604800 && "object" == typeof e.supportTests) return e.supportTests } catch (e) { } return null }(); if (!n) { if ("undefined" != typeof Worker && "undefined" != typeof OffscreenCanvas && "undefined" != typeof URL && URL.createObjectURL && "undefined" != typeof Blob) try { var e = "postMessage(" + f.toString() + "(" + [JSON.stringify(s), u.toString(), p.toString()].join(",") + "));", r = new Blob([e], { type: "text/javascript" }), a = new Worker(URL.createObjectURL(r), { name: "wpTestEmojiSupports" }); return void (a.onmessage = function (e) { c(n = e.data), a.terminate(), t(n) }) } catch (e) { } c(n = f(s, u, p)) } t(n) }).then(function (e) { for (var t in e) n.supports[t] = e[t], n.supports.everything = n.supports.everything && n.supports[t], "flag" !== t && (n.supports.everythingExceptFlag = n.supports.everythingExceptFlag && n.supports[t]); n.supports.everythingExceptFlag = n.supports.everythingExceptFlag && !n.supports.flag, n.DOMReady = !1, n.readyCallback = function () { n.DOMReady = !0 } }).then(function () { return e }).then(function () { var e; n.supports.everything || (n.readyCallback(), (e = n.source || {}).concatemoji ? t(e.concatemoji) : e.wpemoji && e.twemoji && (t(e.twemoji), t(e.wpemoji))) })) }((window, document), window._wpemojiSettings);
         /* ]]> */
     </script>
-    
+
     <style id='wp-emoji-styles-inline-css' type='text/css'>
         img.wp-smiley,
         img.emoji {
@@ -389,12 +389,12 @@
             line-height: 1.6;
         }
     </style>
- 
-   
+
+
     <link rel='stylesheet' id='mystyle.css-css'
         href='https://riya.travel/wp-content/themes/RiyaTravels/assets/css/mystyle.css?ver=1' type='text/css'
         media='all' />
-    
+
     <link rel='stylesheet' id='all.css-css' href='https://use.fontawesome.com/releases/v5.3.1/css/all.css?ver=1'
         type='text/css' media='all' />
     <link rel='stylesheet' id='bootstrap.min.css-css'
@@ -425,12 +425,8 @@
     <link rel='stylesheet' id='common.css-css'
         href='https://riya.travel/wp-content/themes/RiyaTravels/assets/css/common.css?ver=1' type='text/css'
         media='all' />
-    <link rel='stylesheet' id='select2.css-css'
-        href='https://riya.travel/wp-content/themes/RiyaTravels/assets/css/select2.css?ver=1' type='text/css'
-        media='all' />
-    <link rel='stylesheet' id='wpcd-style-css'
-        href='https://riya.travel/wp-content/plugins/wp-coupons-and-deals/assets/css/dist/style.min.css?ver=3.2.1'
-        type='text/css' media='all' />
+
+
 
     <!--n2css-->
     <script>(function () { this._N2 = this._N2 || { _r: [], _d: [], r: function () { this._r.push(arguments) }, d: function () { this._d.push(arguments) } } }).call(window);</script>
@@ -459,10 +455,7 @@
         src="https://riya.travel/wp-content/plugins/wp-coupons-and-deals/assets/js/main.js?ver=3.2.1"
         id="wpcd-main-js-js"></script>
     <link rel="https://api.w.org/" href="https://riya.travel/wp-json/" />
-    <link rel="alternate" title="JSON" type="application/json" href="https://riya.travel/wp-json/wp/v2/pages/24" />
-    <link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://riya.travel/xmlrpc.php?rsd" />
     <meta name="generator" content="WordPress 6.6" />
-    <link rel="canonical" href="https://riya.travel/" />
     <link rel='shortlink' href='https://riya.travel/' />
     <link rel="alternate" title="oEmbed (JSON)" type="application/json+oembed"
         href="https://riya.travel/wp-json/oembed/1.0/embed?url=https%3A%2F%2Friya.travel%2F" />
@@ -478,7 +471,41 @@
 
 <body>
 
-    
+    <!-- Navbar -->
+    <div class="bg-white text-black shadow sticky top-0 z-50">
+        <div class="max-w-6xl mx-auto px-4">
+            <div class="flex justify-between items-center py-4">
+                <div class="flex items-center justify-between space-x-4">
+                    <h3 class=" flex gap-2 items-center text-black"><img class="h-12" src="images/logo.jpg"
+                            alt="">HIMASARA DMC HOLIDAYS PRIVATE LTD</h3>
+
+                </div>
+                <div class="hidden md:flex items-center space-x-4">
+                    <a href="#" class="bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded">My Trips</a>
+                    <a href="#" class="text-white hover:text-red-300">Contact Us</a>
+                </div>
+                <div class="md:hidden flex items-center">
+                    <button id="mobileMenuButton" class="text-white focus:outline-none">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M4 6h16M4 12h16M4 18h16"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+
+    <script>
+        const mobileMenuButton = document.getElementById('mobileMenuButton');
+        const mobileMenu = document.getElementById('mobileMenu');
+
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+    </script>
 
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-58B3CNH" height="0" width="0"
             style="display:none;visibility:hidden"></iframe></noscript>
@@ -533,56 +560,10 @@
 
     <!--header-->
 
-    <section class="main-bg " id="mainSection">
-        <header>
-            <div class="submit-overlay" id="submit-loader" style="display: none;">
-                <div class="submit-loader-container">
-                    <!-- Spinner -->
-                    <div class="spinner-border text-success" role="status" style="width: 3rem; height: 3rem;">
-                        <span class="visually-hidden">Loading...</span>
-                    </div>
-                    <!-- Loader Text -->
-                    <div class="loader-text">Searching best flights for you...!</div>
-                </div>
-            </div>
+    <section
+        class="bg-no-repeat w-full h-full bg-center bg-cover bg-[url('images/landing.jpg')]  "
+        id="mainSection">
 
-            <script>
-                $('document').ready(function () {
-                    $('#submit-loader').hide();
-                });
-
-                function updateLoaderText(text) {
-                    // alert(text)
-                    $('.loader-text').text(text);
-                }
-
-                $('.submitnow').click(function () {
-                    // alert('hii')
-                    $('#submit-loader').show();
-
-                    var loaderText = $(this).attr('loader-text');
-                    updateLoaderText(loaderText);
-
-                    // updateLoaderText();
-                });
-
-            </script>
-
-
-            </div>
-            <!-- Main Navigation outside -->
-            <nav>
-                <div class="container">
-                    <div class="contact-holder">
-                        <ul class="right-pannel">
-                            <li><a href="manage-booking.html"><span class="icon1"></span> Manage Booking </a></li>
-                            <li><a href="#"><span class="icon2"></span> Customer Service </a> </li>
-                        </ul>
-
-                    </div>
-                </div>
-            </nav>
-        </header>
         <style>
             /* Tooltip text */
             .phonetooltip_parent .phonetooltip {
@@ -630,7 +611,7 @@
                 visibility: visible;
             }
         </style>
-    
+
         <script>
             document.addEventListener('DOMContentLoaded', function () {
                 const homeLink = document.querySelector('a[href="#"]');
@@ -642,20 +623,16 @@
                 }
             });
         </script>
-
-
-
-
-
         </header>
-        <div class="container" id="mainContainer">
-            <div class="product-area backdrop-blur-xs bg-transparent p-6 rounded-lg  border-transparent">
+
+
+        <div class="container mt-[-1vw] " id="mainContainer">
+            <div class="product-area  bg-transparent p-6 rounded-lg  border-transparent">
                 <div class="row">
                     <div class="col-lg-12 col-md-12 mb-8 col-sm-12 ">
                         <div class="product-list-slider text-white">
-                            <a href="javascript:void(0);" data-id="main_menu1" onclick="homeFormTab('main_menu1','','')"
-                                class="menu-item active"><span class="pro-icon-box"><span
-                                        class="slk-ico flight-icon "></span> </span><span
+                            <a href="javascript:void(0);" data-id="main_menu1" class="menu-item active"><span
+                                    class="pro-icon-box"><span class="slk-ico flight-icon "></span> </span><span
                                     class="prod-name">Flights</span> </a>
 
 
@@ -709,33 +686,7 @@
 
 
                         </div>
-                        <div class="w-full h-[70vh] sm:h-[30vw] bg-transparent  flex items-center justify-center">
-                            <div class="text-center p-6 bg-transparent bg-opacity-80 rounded-lg shadow-lg max-w-md">
-                              <h2 class="text-2xl font-bold text-blue-400 mb-4">Explore Amazing Destinations</h2>
-                              <p class="text-gray-300 mb-4">Discover the world with our exclusive travel packages</p>
-                              <div class="grid grid-cols-2 gap-4">
-                                <div class="bg-blue-900 p-3 rounded-lg">
-                                  <i class="fas fa-umbrella-beach text-blue-300 text-xl mb-2"></i>
-                                  <p class="font-medium text-white">Beach Getaways</p>
-                                </div>
-                                <div class="bg-green-900 p-3 rounded-lg">
-                                  <i class="fas fa-mountain text-green-300 text-xl mb-2"></i>
-                                  <p class="font-medium text-white">Mountain Treks</p>
-                                </div>
-                                <div class="bg-yellow-900 p-3 rounded-lg">
-                                  <i class="fas fa-city text-yellow-300 text-xl mb-2"></i>
-                                  <p class="font-medium text-white">City Tours</p>
-                                </div>
-                                <div class="bg-purple-900 p-3 rounded-lg">
-                                  <i class="fas fa-heart text-purple-300 text-xl mb-2"></i>
-                                  <p class="font-medium text-white">Honeymoon Packages</p>
-                                </div>
-                              </div>
-                              <button class="mt-6 bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-6 rounded-full transition duration-300">
-                                View All Tours
-                              </button>
-                            </div>
-                          </div>
+                        <div class="w-full h-[70vh] sm:h-[30vw]   flex items-center justify-center"></div>
                     </div>
                 </div>
 
@@ -786,22 +737,7 @@
                     </div>
 
                 </div>
-                <div class="alert alert-danger alert-dismissible  alert-r alert-d" role="alert">
-                    <button type="button" class="close" aria-label="Close">
-                        <span aria-hidden="true">×</span>
-                    </button>
-                    <div class="d-flex justify-content-start">
-                        <svg class="svg-inline--fa fa-circle-xmark alert-fa" aria-hidden="true" focusable="false"
-                            data-prefix="fas" data-icon="circle-xmark" role="img" xmlns="http://www.w3.org/2000/svg"
-                            viewBox="0 0 512 512" data-fa-i2svg="">
-                            <path fill="currentColor"
-                                d="M0 256C0 114.6 114.6 0 256 0C397.4 0 512 114.6 512 256C512 397.4 397.4 512 256 512C114.6 512 0 397.4 0 256zM175 208.1L222.1 255.1L175 303C165.7 312.4 165.7 327.6 175 336.1C184.4 346.3 199.6 346.3 208.1 336.1L255.1 289.9L303 336.1C312.4 346.3 327.6 346.3 336.1 336.1C346.3 327.6 346.3 312.4 336.1 303L289.9 255.1L336.1 208.1C346.3 199.6 346.3 184.4 336.1 175C327.6 165.7 312.4 165.7 303 175L255.1 222.1L208.1 175C199.6 165.7 184.4 165.7 175 175C165.7 184.4 165.7 199.6 175 208.1V208.1z">
-                            </path>
-                        </svg><!-- <i class="fas fa-times-circle alert-fa"></i> Font Awesome fontawesome.com -->
-                        <p class="p-alert">Oops! Something went wrong. Please try again.</p>
-                    </div>
 
-                </div>
 
                 <script>
                     document.addEventListener("DOMContentLoaded", () => {
@@ -1228,65 +1164,38 @@
     <section class="dealsection">
         <div class="container">
             <div class="row">
-                <h1 class="text-center" data-animation="slideInDown" data-animation-delay=".15s">Explore <span
-                        class="hotdeals">Hot Deals</span></h1>
-                <h6 class="subhead text-center" data-animation="slideInUp" data-animation-delay="0.2s">Ready, set,
-                    globe-trot with the best discounts</h6>
+                <h1 class="text-center" data-animation="slideInDown" data-animation-delay=".15s">Discover <span
+                        class="hotdeals">Hot Offers</span></h1>
+                <h6 class="subhead text-center" data-animation="slideInUp" data-animation-delay="0.2s">Get ready to
+                    explore the world with unbeatable travel deals.</h6>
             </div>
             <div class="row">
                 <div class="swiper-container swiper-filter" data-animation="slideInRight" data-animation-delay="0.25s">
                     <div class="swiper-wrapper">
 
                         <div class="swiperslide"><a data-filter="" class="swiper-active">All OFFERS</a></div>
-
-
-
-
-                        <div class="swiperslide"><a data-filter=".cat_7">Flights</a></div>
-
-                        <!--div class="swiperslide"><a data-filter=".filter1">FLIGHTS</a></div>
-            <div class="swiperslide"><a data-filter=".filter2">HOTELS</a></div>
-            <div class="swiperslide"><a data-filter=".filter1">INSURANCE</a></div>
-            <div class="swiperslide"><a data-filter=".filter2">HOLIDAYS</a></div>
-            <div class="swiperslide"><a data-filter=".filter1">BANK OFFERS</a></div>
-            <div class="swiperslide"><a data-filter=".filter1">OTHERS</a></div-->
-
-
-
-
-                        <div class="swiperslide"><a data-filter=".cat_8">Holidays</a></div>
-
-                        <!--div class="swiperslide"><a data-filter=".filter1">FLIGHTS</a></div>
-            <div class="swiperslide"><a data-filter=".filter2">HOTELS</a></div>
-            <div class="swiperslide"><a data-filter=".filter1">INSURANCE</a></div>
-            <div class="swiperslide"><a data-filter=".filter2">HOLIDAYS</a></div>
-            <div class="swiperslide"><a data-filter=".filter1">BANK OFFERS</a></div>
-            <div class="swiperslide"><a data-filter=".filter1">OTHERS</a></div-->
-
-
-
                     </div>
                 </div>
 
                 <div class="slider-wrapper">
                     <ul class="item-slider">
-                        <li class="swiper-slide cat_7">
-                            <a target="_blank" href="https://riya.travel/in/offers/Complimentary-Travel-Insurance">
+                        <li class="swiper-slide cat_8">
+                            <a target="_blank" href="">
                                 <div class="offer-details">
                                     <div class="offerlogo">
-                                        <img src="https://riya-b2c.s3.ap-south-1.amazonaws.com/wp-content/uploads/2025/02/20250227_121648_offer-holidays3.jpg"
+                                        <img class="scale-90" src="images/offer1.jpg"
                                             alt="" />
                                     </div>
                                     <div class="offer-info">
-                                        <h5>Complimentary Travel Insurance</h5>
-                                        <p>Secured trip guaranteed</p>
+                                        <h5>Trip With Kids at 10%* OFF</h5>
+                                        <p>Li’l ones travel for less!</p>
                                         <span>Valid up to </span>
                                     </div>
                                 </div>
                             </a>
                         </li>
                         <li class="swiper-slide cat_8">
-                            <a target="_blank" href="https://riya.travel/in/offers/Trip-With-Kids">
+                            <a target="_blank" href="">
                                 <div class="offer-details">
                                     <div class="offerlogo">
                                         <img src="https://riya-b2c.s3.ap-south-1.amazonaws.com/wp-content/uploads/2025/02/20250227_121056_offer-holidays5.jpg"
@@ -1301,7 +1210,7 @@
                             </a>
                         </li>
                         <li class="swiper-slide cat_8">
-                            <a target="_blank" href="https://riya.travel/in/offers/Complimentary-Travel-Insurance">
+                            <a target="_blank" href="#"">
                                 <div class="offer-details">
                                     <div class="offerlogo">
                                         <img src="https://riya-b2c.s3.ap-south-1.amazonaws.com/wp-content/uploads/2025/02/20250227_121247_offer-holidays6.jpg"
@@ -1315,9 +1224,8 @@
                                 </div>
                             </a>
                         </li>
-
                         <li class="swiper-slide cat_8">
-                            <a target="_blank" href="https://riya.travel/in/offers/Room-Upgrade-Complimentary">
+                            <a target="_blank" href="#">
                                 <div class="offer-details">
                                     <div class="offerlogo">
                                         <img src="https://riya.travel/wp-content/uploads/2024/12/offer-visa3.jpg"
@@ -1424,895 +1332,6 @@
     <div class="view-btn" style="margin-bottom:30px !important;">
         <a class="submit-btn" href="#">View All</a>
     </div>
-
-    <!--div class="row">
-      <div class="offer-banner text-center zoomIn" data-animation="zoomIn" data-animation-delay="0.31s" style="animation-delay: 0.31s;" data-animated="true">
-          <img src="images/holidays/holidays-sponsor-banner.jpg" class="img-fluids" alt="">
-      </div>
-  </div -->
-
-
-    <section class="flybooking">
-        <div class="container flyer">
-            <div class="row ">
-                <h1 class="" data-animation="slideInDown" data-animation-delay="0.3s">Trending <span
-                        class="hotdeals">FLIGHT ROUTES</span></h1>
-
-            </div>
-            <div class="row">
-                <div class="col-lg-7">
-                    <h6 class="subhead " data-animation="slideInUp" data-animation-delay="0.4s">Quick view of popular
-                        flights routes worldwide</h6>
-                </div>
-                <div class="col-lg-5">
-                    <ul class="nav nav-pills   justify-content-end" id="pills-tab" role="tablist"
-                        data-animation="slideInLeft" data-animation-delay="0.4s">
-                        <li class="nav-item" role="presentation">
-                            <button class="nav-link active" id="pills-national-tab" data-bs-toggle="pill"
-                                data-bs-target="#pills-national" type="button" role="tab" aria-controls="pills-national"
-                                aria-selected="true">DOMESTIC</button>
-                        </li>
-                        <li class="nav-item" role="presentation">
-                            <button class="nav-link" id="pills-international-tab" data-bs-toggle="pill"
-                                data-bs-target="#pills-international" type="button" role="tab"
-                                aria-controls="pills-international" aria-selected="false">INTERNATIONAL</button>
-                        </li>
-
-                    </ul>
-                </div>
-            </div>
-
-            <div class="tab-content" id="pills-tabContent">
-                <div class="tab-pane fade show active" id="pills-national" role="tabpanel"
-                    aria-labelledby="pills-national-tab">
-                    <div class="row">
-
-
-
-
-                        <!-- <div class="row"> -->
-
-
-                        <div class="col-lg-3 col-md-4 col-sm-12" data-animation="slideInUp" data-animation-delay=".3s">
-                            <div class="flycard">
-                                <div class="d-flex">
-                                    <div class="flight-details">
-                                        <div class="d-flex">
-                                            <div class="img-circle">
-                                                <img src=".s3.ap-south-1.amazonaws.com/wp-content/uploads/2025/02/20250227_103629_square-bangalore.png"
-                                                    alt="">
-                                            </div>
-                                            <div class=" justify-content-between p-10">
-                                                <a
-                                                    href="https://riya.travel/in/flights/delhi-bengaluru-cheap-air-tickets">
-                                                    <h5>
-                                                        Delhi <img
-                                                            src="https://riya.travel/wp-content/themes/RiyaTravels/assets/images/return-arrow.png"
-                                                            alt="" /> Bengaluru </h5>
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-
-
-
-
-
-                        </div>
-                        <!-- </div> -->
-
-
-
-
-                        <!-- <div class="row"> -->
-
-
-                        <div class="col-lg-3 col-md-4 col-sm-12" data-animation="slideInUp" data-animation-delay=".3s">
-                            <div class="flycard">
-                                <div class="d-flex">
-                                    <div class="flight-details">
-                                        <div class="d-flex">
-                                            <div class="img-circle">
-                                                <img src=".s3.ap-south-1.amazonaws.com/wp-content/uploads/2025/02/20250227_103726_square-hyderabad.png"
-                                                    alt="">
-                                            </div>
-                                            <div class=" justify-content-between p-10">
-                                                <a
-                                                    href="https://riya.travel/in/flights/delhi-hyderabad-cheap-air-tickets">
-                                                    <h5>
-                                                        Delhi <img
-                                                            src="https://riya.travel/wp-content/themes/RiyaTravels/assets/images/return-arrow.png"
-                                                            alt="" /> Hyderabad </h5>
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-
-
-
-
-
-                        </div>
-                        <!-- </div> -->
-
-
-
-
-                        <!-- <div class="row"> -->
-
-
-                        <div class="col-lg-3 col-md-4 col-sm-12" data-animation="slideInUp" data-animation-delay=".3s">
-                            <div class="flycard">
-                                <div class="d-flex">
-                                    <div class="flight-details">
-                                        <div class="d-flex">
-                                            <div class="img-circle">
-                                                <img src=".s3.ap-south-1.amazonaws.com/wp-content/uploads/2025/02/20250227_103852_square-kolkata.png"
-                                                    alt="">
-                                            </div>
-                                            <div class=" justify-content-between p-10">
-                                                <a
-                                                    href="https://riya.travel/in/flights/delhi-kolkata-cheap-air-tickets">
-                                                    <h5>
-                                                        Delhi <img
-                                                            src="https://riya.travel/wp-content/themes/RiyaTravels/assets/images/return-arrow.png"
-                                                            alt="" /> Kolkata </h5>
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-
-
-
-
-
-                        </div>
-                        <!-- </div> -->
-
-
-
-
-                        <!-- <div class="row"> -->
-
-
-                        <div class="col-lg-3 col-md-4 col-sm-12" data-animation="slideInUp" data-animation-delay=".3s">
-                            <div class="flycard">
-                                <div class="d-flex">
-                                    <div class="flight-details">
-                                        <div class="d-flex">
-                                            <div class="img-circle">
-                                                <img src=".s3.ap-south-1.amazonaws.com/wp-content/uploads/2025/02/20250227_104023_square-pune.png"
-                                                    alt="">
-                                            </div>
-                                            <div class=" justify-content-between p-10">
-                                                <a href="https://riya.travel/in/flights/delhi-pune-cheap-air-tickets">
-                                                    <h5>
-                                                        Delhi <img
-                                                            src="https://riya.travel/wp-content/themes/RiyaTravels/assets/images/return-arrow.png"
-                                                            alt="" /> Pune </h5>
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-
-
-
-
-
-                        </div>
-                        <!-- </div> -->
-
-
-
-
-                        <!-- <div class="row"> -->
-
-
-                        <div class="col-lg-3 col-md-4 col-sm-12" data-animation="slideInUp" data-animation-delay=".3s">
-                            <div class="flycard">
-                                <div class="d-flex">
-                                    <div class="flight-details">
-                                        <div class="d-flex">
-                                            <div class="img-circle">
-                                                <img src=".s3.ap-south-1.amazonaws.com/wp-content/uploads/2025/02/20250227_103909_square-mumbai.png"
-                                                    alt="">
-                                            </div>
-                                            <div class=" justify-content-between p-10">
-                                                <a
-                                                    href="https://riya.travel/in/flights/hyderabad-mumbai-cheap-air-tickets">
-                                                    <h5>
-                                                        Hyderabad <img
-                                                            src="https://riya.travel/wp-content/themes/RiyaTravels/assets/images/return-arrow.png"
-                                                            alt="" /> Mumbai </h5>
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-
-
-
-
-
-                        </div>
-                        <!-- </div> -->
-
-
-
-
-                        <!-- <div class="row"> -->
-
-
-                        <div class="col-lg-3 col-md-4 col-sm-12" data-animation="slideInUp" data-animation-delay=".3s">
-                            <div class="flycard">
-                                <div class="d-flex">
-                                    <div class="flight-details">
-                                        <div class="d-flex">
-                                            <div class="img-circle">
-                                                <img src=".s3.ap-south-1.amazonaws.com/wp-content/uploads/2025/02/20250227_104040_square-bangalore.png"
-                                                    alt="">
-                                            </div>
-                                            <div class=" justify-content-between p-10">
-                                                <a
-                                                    href="https://riya.travel/in/flights/kolkata-bengaluru-cheap-air-tickets">
-                                                    <h5>
-                                                        Kolkata <img
-                                                            src="https://riya.travel/wp-content/themes/RiyaTravels/assets/images/return-arrow.png"
-                                                            alt="" /> Bengaluru </h5>
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-
-
-
-
-
-                        </div>
-                        <!-- </div> -->
-
-
-
-
-                        <!-- <div class="row"> -->
-
-
-                        <div class="col-lg-3 col-md-4 col-sm-12" data-animation="slideInUp" data-animation-delay=".3s">
-                            <div class="flycard">
-                                <div class="d-flex">
-                                    <div class="flight-details">
-                                        <div class="d-flex">
-                                            <div class="img-circle">
-                                                <img src=".s3.ap-south-1.amazonaws.com/wp-content/uploads/2025/02/20250227_103428_square-delhi.png"
-                                                    alt="">
-                                            </div>
-                                            <div class=" justify-content-between p-10">
-                                                <a href="https://riya.travel/in/flights/mumbai-delhi-cheap-air-tickets">
-                                                    <h5>
-                                                        Mumbai <img
-                                                            src="https://riya.travel/wp-content/themes/RiyaTravels/assets/images/return-arrow.png"
-                                                            alt="" /> Delhi </h5>
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-
-
-
-
-
-                        </div>
-                        <!-- </div> -->
-
-
-
-
-                        <!-- <div class="row"> -->
-
-
-                        <div class="col-lg-3 col-md-4 col-sm-12" data-animation="slideInUp" data-animation-delay=".3s">
-                            <div class="flycard">
-                                <div class="d-flex">
-                                    <div class="flight-details">
-                                        <div class="d-flex">
-                                            <div class="img-circle">
-                                                <img src=".s3.ap-south-1.amazonaws.com/wp-content/uploads/2025/02/20250227_103428_square-delhi.png"
-                                                    alt="">
-                                            </div>
-                                            <div class=" justify-content-between p-10">
-                                                <a
-                                                    href="https://riya.travel/in/flights/chennai-delhi-cheap-air-tickets">
-                                                    <h5>
-                                                        Chennai <img
-                                                            src="https://riya.travel/wp-content/themes/RiyaTravels/assets/images/return-arrow.png"
-                                                            alt="" /> Delhi </h5>
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-
-
-
-
-
-                        </div>
-                        <!-- </div> -->
-
-
-
-
-                        <!-- <div class="row"> -->
-
-
-                        <div class="col-lg-3 col-md-4 col-sm-12" data-animation="slideInUp" data-animation-delay=".3s">
-                            <div class="flycard">
-                                <div class="d-flex">
-                                    <div class="flight-details">
-                                        <div class="d-flex">
-                                            <div class="img-circle">
-                                                <img src=".s3.ap-south-1.amazonaws.com/wp-content/uploads/2025/02/20250227_104040_square-bangalore.png"
-                                                    alt="">
-                                            </div>
-                                            <div class=" justify-content-between p-10">
-                                                <a
-                                                    href="https://riya.travel/in/flights/agra-bengaluru-cheap-air-tickets">
-                                                    <h5>
-                                                        Agra <img
-                                                            src="https://riya.travel/wp-content/themes/RiyaTravels/assets/images/return-arrow.png"
-                                                            alt="" /> Bengaluru </h5>
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-
-
-
-
-
-                        </div>
-                        <!-- </div> -->
-
-
-
-
-                        <!-- <div class="row"> -->
-
-
-                        <div class="col-lg-3 col-md-4 col-sm-12" data-animation="slideInUp" data-animation-delay=".3s">
-                            <div class="flycard">
-                                <div class="d-flex">
-                                    <div class="flight-details">
-                                        <div class="d-flex">
-                                            <div class="img-circle">
-                                                <img src=".s3.ap-south-1.amazonaws.com/wp-content/uploads/2025/02/20250227_104311_square-srinagar.png"
-                                                    alt="">
-                                            </div>
-                                            <div class=" justify-content-between p-10">
-                                                <a
-                                                    href="https://riya.travel/in/flights/delhi-srinagar-cheap-air-tickets">
-                                                    <h5>
-                                                        Delhi <img
-                                                            src="https://riya.travel/wp-content/themes/RiyaTravels/assets/images/return-arrow.png"
-                                                            alt="" /> Srinagar </h5>
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-
-
-
-
-
-                        </div>
-                        <!-- </div> -->
-
-
-
-
-                        <!-- <div class="row"> -->
-
-
-                        <div class="col-lg-3 col-md-4 col-sm-12" data-animation="slideInUp" data-animation-delay=".3s">
-                            <div class="flycard">
-                                <div class="d-flex">
-                                    <div class="flight-details">
-                                        <div class="d-flex">
-                                            <div class="img-circle">
-                                                <img src=".s3.ap-south-1.amazonaws.com/wp-content/uploads/2025/02/20250227_103428_square-delhi.png"
-                                                    alt="">
-                                            </div>
-                                            <div class=" justify-content-between p-10">
-                                                <a
-                                                    href="https://riya.travel/in/flights/bengaluru-delhi-cheap-air-tickets">
-                                                    <h5>
-                                                        Bengaluru <img
-                                                            src="https://riya.travel/wp-content/themes/RiyaTravels/assets/images/return-arrow.png"
-                                                            alt="" /> Delhi </h5>
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-
-
-
-
-
-                        </div>
-                        <!-- </div> -->
-
-
-
-
-                        <!-- <div class="row"> -->
-
-
-                        <div class="col-lg-3 col-md-4 col-sm-12" data-animation="slideInUp" data-animation-delay=".3s">
-                            <div class="flycard">
-                                <div class="d-flex">
-                                    <div class="flight-details">
-                                        <div class="d-flex">
-                                            <div class="img-circle">
-                                                <img src=".s3.ap-south-1.amazonaws.com/wp-content/uploads/2025/02/20250227_103909_square-mumbai.png"
-                                                    alt="">
-                                            </div>
-                                            <div class=" justify-content-between p-10">
-                                                <a
-                                                    href="https://riya.travel/in/flights/mumbai-bengaluru-cheap-air-tickets">
-                                                    <h5>
-                                                        Mumbai <img
-                                                            src="https://riya.travel/wp-content/themes/RiyaTravels/assets/images/return-arrow.png"
-                                                            alt="" /> Bengaluru </h5>
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-
-
-
-
-
-                        </div>
-                        <!-- </div> -->
-
-                    </div>
-
-                </div>
-                <div class="tab-pane fade" id="pills-international" role="tabpanel"
-                    aria-labelledby="pills-international-tab">
-                    <div class="row">
-
-                        <!-- <div class="row"> -->
-                        <div class="col-lg-3 col-md-4 col-sm-12" data-animation="slideInUp" data-animation-delay=".3s">
-                            <div class="flycard">
-                                <div class="d-flex">
-                                    <div class="flight-details">
-                                        <div class="d-flex">
-                                            <div class="img-circle">
-                                                <img src=".s3.ap-south-1.amazonaws.com/wp-content/uploads/2025/03/20250317_092943_dubai.png"
-                                                    alt="">
-                                            </div>
-                                            <div class=" justify-content-between p-10">
-                                                <a
-                                                    href="https://riya.travel/in/international-flights/mumbai-dubai-cheap-air-tickets">
-                                                    <h5>
-                                                        Mumbai <img
-                                                            src="https://riya.travel/wp-content/themes/RiyaTravels/assets/images/return-arrow.png"
-                                                            alt="" /> Dubai </h5>
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-
-
-
-
-
-                        </div>
-                        <!-- </div> -->
-
-                        <!-- <div class="row"> -->
-                        <div class="col-lg-3 col-md-4 col-sm-12" data-animation="slideInUp" data-animation-delay=".3s">
-                            <div class="flycard">
-                                <div class="d-flex">
-                                    <div class="flight-details">
-                                        <div class="d-flex">
-                                            <div class="img-circle">
-                                                <img src=".s3.ap-south-1.amazonaws.com/wp-content/uploads/2025/03/20250317_093056_toronto.png"
-                                                    alt="">
-                                            </div>
-                                            <div class=" justify-content-between p-10">
-                                                <a
-                                                    href="https://riya.travel/in/international-flights/delhi-toronto-cheap-air-tickets">
-                                                    <h5>
-                                                        Delhi <img
-                                                            src="https://riya.travel/wp-content/themes/RiyaTravels/assets/images/return-arrow.png"
-                                                            alt="" /> Toronto </h5>
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-
-
-
-
-
-                        </div>
-                        <!-- </div> -->
-
-                        <!-- <div class="row"> -->
-                        <div class="col-lg-3 col-md-4 col-sm-12" data-animation="slideInUp" data-animation-delay=".3s">
-                            <div class="flycard">
-                                <div class="d-flex">
-                                    <div class="flight-details">
-                                        <div class="d-flex">
-                                            <div class="img-circle">
-                                                <img src=".s3.ap-south-1.amazonaws.com/wp-content/uploads/2025/03/20250317_093153_colombo.png"
-                                                    alt="">
-                                            </div>
-                                            <div class=" justify-content-between p-10">
-                                                <a
-                                                    href="https://riya.travel/in/international-flights/chennai-colombo-cheap-air-tickets">
-                                                    <h5>
-                                                        Chennai <img
-                                                            src="https://riya.travel/wp-content/themes/RiyaTravels/assets/images/return-arrow.png"
-                                                            alt="" /> Colombo </h5>
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-
-
-
-
-
-                        </div>
-                        <!-- </div> -->
-
-                        <!-- <div class="row"> -->
-                        <div class="col-lg-3 col-md-4 col-sm-12" data-animation="slideInUp" data-animation-delay=".3s">
-                            <div class="flycard">
-                                <div class="d-flex">
-                                    <div class="flight-details">
-                                        <div class="d-flex">
-                                            <div class="img-circle">
-                                                <img src=".s3.ap-south-1.amazonaws.com/wp-content/uploads/2025/03/20250317_093252_singapore.png"
-                                                    alt="">
-                                            </div>
-                                            <div class=" justify-content-between p-10">
-                                                <a
-                                                    href="https://riya.travel/in/international-flights/chennai-singapore-cheap-air-tickets">
-                                                    <h5>
-                                                        Chennai <img
-                                                            src="https://riya.travel/wp-content/themes/RiyaTravels/assets/images/return-arrow.png"
-                                                            alt="" /> Singapore </h5>
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-
-
-
-
-
-                        </div>
-                        <!-- </div> -->
-
-                        <!-- <div class="row"> -->
-                        <div class="col-lg-3 col-md-4 col-sm-12" data-animation="slideInUp" data-animation-delay=".3s">
-                            <div class="flycard">
-                                <div class="d-flex">
-                                    <div class="flight-details">
-                                        <div class="d-flex">
-                                            <div class="img-circle">
-                                                <img src=".s3.ap-south-1.amazonaws.com/wp-content/uploads/2025/03/20250317_093427_kathmandu.png"
-                                                    alt="">
-                                            </div>
-                                            <div class=" justify-content-between p-10">
-                                                <a
-                                                    href="https://riya.travel/in/international-flights/delhi-kathmandu-cheap-air-tickets">
-                                                    <h5>
-                                                        Delhi <img
-                                                            src="https://riya.travel/wp-content/themes/RiyaTravels/assets/images/return-arrow.png"
-                                                            alt="" /> Kathmandu </h5>
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-
-
-
-
-
-                        </div>
-                        <!-- </div> -->
-
-                        <!-- <div class="row"> -->
-                        <div class="col-lg-3 col-md-4 col-sm-12" data-animation="slideInUp" data-animation-delay=".3s">
-                            <div class="flycard">
-                                <div class="d-flex">
-                                    <div class="flight-details">
-                                        <div class="d-flex">
-                                            <div class="img-circle">
-                                                <img src="https://riya-b2c.s3.ap-south-1.amazonaws.com/wp-content/uploads/2025/02/20250227_105955_home-tend-london.jpg"
-                                                    alt="">
-                                            </div>
-                                            <div class=" justify-content-between p-10">
-                                                <a
-                                                    href="https://riya-b2c.s3.ap-south-1.amazonaws.com/wp-content/uploads/2025/02/20250227_105955_home-tend-london.jpg">
-                                                    <h5>
-                                                        Delhi <img
-                                                            src="https://riya.travel/wp-content/themes/RiyaTravels/assets/images/return-arrow.png"
-                                                            alt="" /> London </h5>
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-
-
-
-
-
-                        </div>
-                        <!-- </div> -->
-
-                        <!-- <div class="row"> -->
-                        <div class="col-lg-3 col-md-4 col-sm-12" data-animation="slideInUp" data-animation-delay=".3s">
-                            <div class="flycard">
-                                <div class="d-flex">
-                                    <div class="flight-details">
-                                        <div class="d-flex">
-                                            <div class="img-circle">
-                                                <img src=".s3.ap-south-1.amazonaws.com/wp-content/uploads/2025/03/20250324_061726_dubai-1.png"
-                                                    alt="">
-                                            </div>
-                                            <div class=" justify-content-between p-10">
-                                                <a
-                                                    href="https://riya.travel/in/international-flights/delhi-dubai-cheap-air-tickets">
-                                                    <h5>
-                                                        Delhi <img
-                                                            src="https://riya.travel/wp-content/themes/RiyaTravels/assets/images/return-arrow.png"
-                                                            alt="" /> Dubai </h5>
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-
-
-
-
-
-                        </div>
-                        <!-- </div> -->
-
-                        <!-- <div class="row"> -->
-                        <div class="col-lg-3 col-md-4 col-sm-12" data-animation="slideInUp" data-animation-delay=".3s">
-                            <div class="flycard">
-                                <div class="d-flex">
-                                    <div class="flight-details">
-                                        <div class="d-flex">
-                                            <div class="img-circle">
-                                                <img src="https://riya-b2c.s3.ap-south-1.amazonaws.com/wp-content/uploads/2025/02/20250227_105955_home-tend-london.jpg"
-                                                    alt="">
-                                            </div>
-                                            <div class=" justify-content-between p-10">
-                                                <a
-                                                    href="https://riya.travel/in/international-flights/mumbai-london-cheap-air-tickets">
-                                                    <h5>
-                                                        Mumbai <img
-                                                            src="https://riya.travel/wp-content/themes/RiyaTravels/assets/images/return-arrow.png"
-                                                            alt="" /> London </h5>
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-
-
-
-
-
-                        </div>
-                        <!-- </div> -->
-
-                        <!-- <div class="row"> -->
-                        <div class="col-lg-3 col-md-4 col-sm-12" data-animation="slideInUp" data-animation-delay=".3s">
-                            <div class="flycard">
-                                <div class="d-flex">
-                                    <div class="flight-details">
-                                        <div class="d-flex">
-                                            <div class="img-circle">
-                                                <img src=".s3.ap-south-1.amazonaws.com/wp-content/uploads/2025/03/20250324_061936_dubai-2.png"
-                                                    alt="">
-                                            </div>
-                                            <div class=" justify-content-between p-10">
-                                                <a
-                                                    href="https://riya.travel/in/international-flights/hyderabad-dubai-cheap-air-tickets">
-                                                    <h5>
-                                                        Hyderabad <img
-                                                            src="https://riya.travel/wp-content/themes/RiyaTravels/assets/images/return-arrow.png"
-                                                            alt="" /> Dubai </h5>
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-
-
-
-
-
-                        </div>
-                        <!-- </div> -->
-
-                        <!-- <div class="row"> -->
-                        <div class="col-lg-3 col-md-4 col-sm-12" data-animation="slideInUp" data-animation-delay=".3s">
-                            <div class="flycard">
-                                <div class="d-flex">
-                                    <div class="flight-details">
-                                        <div class="d-flex">
-                                            <div class="img-circle">
-                                                <img src=".s3.ap-south-1.amazonaws.com/wp-content/uploads/2025/03/20250324_062000_Saudi.png"
-                                                    alt="">
-                                            </div>
-                                            <div class=" justify-content-between p-10">
-                                                <a
-                                                    href="https://riya.travel/in/international-flights/mumbai-abudhabi-cheap-air-tickets">
-                                                    <h5>
-                                                        Mumbai <img
-                                                            src="https://riya.travel/wp-content/themes/RiyaTravels/assets/images/return-arrow.png"
-                                                            alt="" /> Abu Dhabi </h5>
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-
-
-
-
-
-                        </div>
-                        <!-- </div> -->
-
-                        <!-- <div class="row"> -->
-                        <div class="col-lg-3 col-md-4 col-sm-12" data-animation="slideInUp" data-animation-delay=".3s">
-                            <div class="flycard">
-                                <div class="d-flex">
-                                    <div class="flight-details">
-                                        <div class="d-flex">
-                                            <div class="img-circle">
-                                                <img src=".s3.ap-south-1.amazonaws.com/wp-content/uploads/2025/03/20250324_062129_bangkok.png"
-                                                    alt="">
-                                            </div>
-                                            <div class=" justify-content-between p-10">
-                                                <a
-                                                    href="https://riya.travel/in/international-flights/mumbai-bangkok-cheap-air-tickets">
-                                                    <h5>
-                                                        Mumbai <img
-                                                            src="https://riya.travel/wp-content/themes/RiyaTravels/assets/images/return-arrow.png"
-                                                            alt="" /> Bangkok </h5>
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-
-
-
-
-
-                        </div>
-                        <!-- </div> -->
-
-                        <!-- <div class="row"> -->
-                        <div class="col-lg-3 col-md-4 col-sm-12" data-animation="slideInUp" data-animation-delay=".3s">
-                            <div class="flycard">
-                                <div class="d-flex">
-                                    <div class="flight-details">
-                                        <div class="d-flex">
-                                            <div class="img-circle">
-                                                <img src=".s3.ap-south-1.amazonaws.com/wp-content/uploads/2025/03/20250324_062148_Dhaka.png"
-                                                    alt="">
-                                            </div>
-                                            <div class=" justify-content-between p-10">
-                                                <a
-                                                    href="https://riya.travel/in/international-flights/kolkata-dhaka-cheap-air-tickets">
-                                                    <h5>
-                                                        Kolkata <img
-                                                            src="https://riya.travel/wp-content/themes/RiyaTravels/assets/images/return-arrow.png"
-                                                            alt="" /> Dhaka </h5>
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-
-
-
-
-
-                        </div>
-                        <!-- </div> -->
-
-                    </div>
-
-                </div>
-            </div>
-
-
-
-
-
-
-        </div>
-    </section>
-
     <style>
         @media only screen and (max-width: 1440px) {
             .form-control {
@@ -2326,10 +1345,10 @@
         <div class="container">
             <div class="row">
                 <div class="pagehead">
-                    <h1 class="text-center" data-animation="slideInDown" data-animation-delay=".15s">Top <span>Trending
-                            Destinations</span></h1>
-                    <div class="sub-head text-center" data-animation="slideInUp" data-animation-delay="0.2s">Have your
-                        dream stay at top hotels worldwide</div>
+                    <h1 class="text-center" data-animation="slideInDown" data-animation-delay=".15s">Top <span>Hot
+                            Travel Picks</span></h1>
+                    <div class="sub-head text-center" data-animation="slideInUp" data-animation-delay="0.2s">Your
+                        Perfect Stay, Anywhere on Earth</div>
                 </div>
                 <div class="carousel">
                     <div class="swiper">
@@ -2526,247 +1545,6 @@
     </script>
 
 
-    <Section class="location">
-        <div class="container">
-            <div class="row">
-                <div class="pagehead">
-                    <h1 class="text-center" data-animation="slideInDown" data-animation-delay=".15s">Your Dream
-                        <span>Holiday Awaits!</span>
-                    </h1>
-                    <div class="sub-head text-center" data-animation="slideInUp" data-animation-delay="0.2s">Tailor-made
-                        holiday packages for every traveler-beaches, adventure, relaxation & more!</div>
-                </div>
-            </div>
-            <div class="row home-holi-gal">
-                <div class="gallery" data-animation="slideInUp" data-animation-delay="0.2s">
-                    <div class="getcallback2 gallery__img gallery-small"
-                        style="background-image: url('.s3.ap-south-1.amazonaws.com/wp-content/uploads/2025/02/20250227_114237_home-holidays-gal1.jpg');"
-                        place='Lakshadweep' product-type='' data-bs-toggle="modal" data-bs-target="#getcallback">
-                        <div class="inclusive-tag" style="left: 0;">Air Exclusive - Ex Goa</div>
-                        <div class="gal-place">
-                            <a>
-                                <!-- <div> -->
-                                <div class="gal-left-text">
-                                    <div class="day-label">3N/4D</div> Lakshadweep <span>Starting at <strong
-                                            class="line-through">₹51,990*</strong> <strong>₹49,990*</strong> Per
-                                        person</span>
-                                </div>
-                                <div class="ad-right"><svg xmlns="http://www.w3.org/2000/svg" width="46" height="46"
-                                        viewBox="0 0 46 46" fill="none">
-                                        <path fill-rule="evenodd" clip-rule="evenodd"
-                                            d="M13.0711 33.4436C12.8627 33.2353 12.7374 32.961 12.7227 32.6811C12.708 32.4011 12.805 32.1385 12.9926 31.951L29.6693 15.2742L20.2763 14.7817C19.996 14.767 19.7214 14.6415 19.5128 14.4329C19.3042 14.2243 19.1787 13.9496 19.1639 13.6694C19.1492 13.3891 19.2464 13.1261 19.4342 12.9384C19.6219 12.7506 19.8849 12.6534 20.1651 12.6682L32.1062 13.2962C32.245 13.3033 32.3839 13.3378 32.515 13.3975C32.6461 13.4573 32.7667 13.5413 32.8701 13.6446C32.9734 13.748 33.0574 13.8686 33.1171 13.9997C33.1769 14.1308 33.2114 14.2697 33.2185 14.4085L33.8465 26.3495C33.8613 26.6298 33.7641 26.8928 33.5763 27.0805C33.3885 27.2683 33.1256 27.3655 32.8453 27.3507C32.5651 27.336 32.2904 27.2105 32.0818 27.0019C31.8732 26.7933 31.7477 26.5187 31.733 26.2384L31.2404 16.8454L14.5637 33.5221C14.3762 33.7097 14.1136 33.8067 13.8336 33.792C13.5537 33.7773 13.2794 33.652 13.0711 33.4436V33.4436Z"
-                                            fill="white" />
-                                    </svg></div>
-                            </a>
-                            <!-- </div> -->
-                        </div>
-                        <!-- </div> -->
-                    </div>
-                    <div class="getcallback2 gallery__img gallery__img--wide"
-                        style="background-image: url('.s3.ap-south-1.amazonaws.com/wp-content/uploads/2025/02/20250227_114536_home-holidays-gal2.jpg');"
-                        place='Kashmir' product-type='' data-bs-toggle="modal" data-bs-target="#getcallback">
-                        <div class="inclusive-tag" style="left: 0;">Air Inclusive - Ex Delhi</div>
-                        <div class="gal-place">
-                            <a>
-                                <!-- <div> -->
-                                <div class="gal-left-text">
-                                    <div class="day-label">5N/6D</div> Kashmir <span><span>Starting at <strong
-                                                class="line-through">₹45,990*</strong> <strong>₹43,990*</strong> Per
-                                            person </span></span>
-                                </div>
-                                <div class="ad-right"><svg xmlns="http://www.w3.org/2000/svg" width="46" height="46"
-                                        viewBox="0 0 46 46" fill="none">
-                                        <path fill-rule="evenodd" clip-rule="evenodd"
-                                            d="M13.0711 33.4436C12.8627 33.2353 12.7374 32.961 12.7227 32.6811C12.708 32.4011 12.805 32.1385 12.9926 31.951L29.6693 15.2742L20.2763 14.7817C19.996 14.767 19.7214 14.6415 19.5128 14.4329C19.3042 14.2243 19.1787 13.9496 19.1639 13.6694C19.1492 13.3891 19.2464 13.1261 19.4342 12.9384C19.6219 12.7506 19.8849 12.6534 20.1651 12.6682L32.1062 13.2962C32.245 13.3033 32.3839 13.3378 32.515 13.3975C32.6461 13.4573 32.7667 13.5413 32.8701 13.6446C32.9734 13.748 33.0574 13.8686 33.1171 13.9997C33.1769 14.1308 33.2114 14.2697 33.2185 14.4085L33.8465 26.3495C33.8613 26.6298 33.7641 26.8928 33.5763 27.0805C33.3885 27.2683 33.1256 27.3655 32.8453 27.3507C32.5651 27.336 32.2904 27.2105 32.0818 27.0019C31.8732 26.7933 31.7477 26.5187 31.733 26.2384L31.2404 16.8454L14.5637 33.5221C14.3762 33.7097 14.1136 33.8067 13.8336 33.792C13.5537 33.7773 13.2794 33.652 13.0711 33.4436V33.4436Z"
-                                            fill="white" />
-                                    </svg></div>
-                            </a>
-                            <!-- </div> -->
-                        </div>
-                        <!-- </div> -->
-                    </div>
-                    <div class="getcallback2 gallery__img gallery__img--tall"
-                        style="background-image: url('.s3.ap-south-1.amazonaws.com/wp-content/uploads/2025/02/20250227_114731_home-holidays-gal3.jpg');"
-                        place='Ladakh' product-type='' data-bs-toggle="modal" data-bs-target="#getcallback">
-                        <div class="inclusive-tag" style="left: 0;">Air Inclusive - Ex Delhi</div>
-                        <div class="gal-place">
-                            <a>
-                                <!-- <div> -->
-                                <div class="gal-left-text">
-                                    <div class="day-label">7N/8D</div> Ladakh <span><span>Starting at <strong
-                                                class="line-through">₹55,990*</strong> <strong>₹53,990*</strong> Per
-                                            person </span></span>
-                                </div>
-                                <div class="ad-right"><svg xmlns="http://www.w3.org/2000/svg" width="46" height="46"
-                                        viewBox="0 0 46 46" fill="none">
-                                        <path fill-rule="evenodd" clip-rule="evenodd"
-                                            d="M13.0711 33.4436C12.8627 33.2353 12.7374 32.961 12.7227 32.6811C12.708 32.4011 12.805 32.1385 12.9926 31.951L29.6693 15.2742L20.2763 14.7817C19.996 14.767 19.7214 14.6415 19.5128 14.4329C19.3042 14.2243 19.1787 13.9496 19.1639 13.6694C19.1492 13.3891 19.2464 13.1261 19.4342 12.9384C19.6219 12.7506 19.8849 12.6534 20.1651 12.6682L32.1062 13.2962C32.245 13.3033 32.3839 13.3378 32.515 13.3975C32.6461 13.4573 32.7667 13.5413 32.8701 13.6446C32.9734 13.748 33.0574 13.8686 33.1171 13.9997C33.1769 14.1308 33.2114 14.2697 33.2185 14.4085L33.8465 26.3495C33.8613 26.6298 33.7641 26.8928 33.5763 27.0805C33.3885 27.2683 33.1256 27.3655 32.8453 27.3507C32.5651 27.336 32.2904 27.2105 32.0818 27.0019C31.8732 26.7933 31.7477 26.5187 31.733 26.2384L31.2404 16.8454L14.5637 33.5221C14.3762 33.7097 14.1136 33.8067 13.8336 33.792C13.5537 33.7773 13.2794 33.652 13.0711 33.4436V33.4436Z"
-                                            fill="white" />
-                                    </svg></div>
-                            </a>
-                            <!-- </div> -->
-                        </div>
-                        <!-- </div> -->
-                    </div>
-                    <div class="getcallback2 gallery__img gallery__img--wide"
-                        style="background-image: url('.s3.ap-south-1.amazonaws.com/wp-content/uploads/2025/02/20250227_115113_home-holidays-gal5.jpg');"
-                        place='Sikkim &#8211; Darjeeling' product-type='' data-bs-toggle="modal"
-                        data-bs-target="#getcallback">
-                        <div class="gal-place">
-                            <a>
-                                <!-- <div> -->
-                                <div class="gal-left-text">
-                                    <div class="day-label">6N/7D</div> Sikkim &#8211; Darjeeling <span><span>Starting at
-                                            <strong class="line-through">₹42,990*</strong> <strong>₹40,990*</strong> Per
-                                            person </span></span>
-                                </div>
-                                <div class="ad-right"><svg xmlns="http://www.w3.org/2000/svg" width="46" height="46"
-                                        viewBox="0 0 46 46" fill="none">
-                                        <path fill-rule="evenodd" clip-rule="evenodd"
-                                            d="M13.0711 33.4436C12.8627 33.2353 12.7374 32.961 12.7227 32.6811C12.708 32.4011 12.805 32.1385 12.9926 31.951L29.6693 15.2742L20.2763 14.7817C19.996 14.767 19.7214 14.6415 19.5128 14.4329C19.3042 14.2243 19.1787 13.9496 19.1639 13.6694C19.1492 13.3891 19.2464 13.1261 19.4342 12.9384C19.6219 12.7506 19.8849 12.6534 20.1651 12.6682L32.1062 13.2962C32.245 13.3033 32.3839 13.3378 32.515 13.3975C32.6461 13.4573 32.7667 13.5413 32.8701 13.6446C32.9734 13.748 33.0574 13.8686 33.1171 13.9997C33.1769 14.1308 33.2114 14.2697 33.2185 14.4085L33.8465 26.3495C33.8613 26.6298 33.7641 26.8928 33.5763 27.0805C33.3885 27.2683 33.1256 27.3655 32.8453 27.3507C32.5651 27.336 32.2904 27.2105 32.0818 27.0019C31.8732 26.7933 31.7477 26.5187 31.733 26.2384L31.2404 16.8454L14.5637 33.5221C14.3762 33.7097 14.1136 33.8067 13.8336 33.792C13.5537 33.7773 13.2794 33.652 13.0711 33.4436V33.4436Z"
-                                            fill="white" />
-                                    </svg></div>
-                            </a>
-                            <!-- </div> -->
-                        </div>
-                        <!-- </div> -->
-                    </div>
-                    <div class="getcallback2 gallery__img gallery-small"
-                        style="background-image: url('.s3.ap-south-1.amazonaws.com/wp-content/uploads/2025/02/20250227_115029_home-holidays-gal4.jpg');"
-                        place='Bhutan' product-type='' data-bs-toggle="modal" data-bs-target="#getcallback">
-                        <div class="gal-place">
-                            <a>
-                                <!-- <div> -->
-                                <div class="gal-left-text">
-                                    <div class="day-label">7N/8D</div> Bhutan <span><span>Starting at <strong
-                                                class="line-through">₹47,990*</strong> <strong>₹45,990*</strong> Per
-                                            person </span></span>
-                                </div>
-                                <div class="ad-right"><svg xmlns="http://www.w3.org/2000/svg" width="46" height="46"
-                                        viewBox="0 0 46 46" fill="none">
-                                        <path fill-rule="evenodd" clip-rule="evenodd"
-                                            d="M13.0711 33.4436C12.8627 33.2353 12.7374 32.961 12.7227 32.6811C12.708 32.4011 12.805 32.1385 12.9926 31.951L29.6693 15.2742L20.2763 14.7817C19.996 14.767 19.7214 14.6415 19.5128 14.4329C19.3042 14.2243 19.1787 13.9496 19.1639 13.6694C19.1492 13.3891 19.2464 13.1261 19.4342 12.9384C19.6219 12.7506 19.8849 12.6534 20.1651 12.6682L32.1062 13.2962C32.245 13.3033 32.3839 13.3378 32.515 13.3975C32.6461 13.4573 32.7667 13.5413 32.8701 13.6446C32.9734 13.748 33.0574 13.8686 33.1171 13.9997C33.1769 14.1308 33.2114 14.2697 33.2185 14.4085L33.8465 26.3495C33.8613 26.6298 33.7641 26.8928 33.5763 27.0805C33.3885 27.2683 33.1256 27.3655 32.8453 27.3507C32.5651 27.336 32.2904 27.2105 32.0818 27.0019C31.8732 26.7933 31.7477 26.5187 31.733 26.2384L31.2404 16.8454L14.5637 33.5221C14.3762 33.7097 14.1136 33.8067 13.8336 33.792C13.5537 33.7773 13.2794 33.652 13.0711 33.4436V33.4436Z"
-                                            fill="white" />
-                                    </svg></div>
-                            </a>
-                            <!-- </div> -->
-                        </div>
-                        <!-- </div> -->
-                    </div>
-                    <div class="getcallback2 gallery__img gallery__img--tall"
-                        style="background-image: url('.s3.ap-south-1.amazonaws.com/wp-content/uploads/2025/02/20250227_115612_home-holidays-gal6.jpg');"
-                        place='Assam Meghalaya' product-type='' data-bs-toggle="modal" data-bs-target="#getcallback">
-                        <div class="gal-place">
-                            <a>
-                                <!-- <div> -->
-                                <div class="gal-left-text">
-                                    <div class="day-label">6N/7D</div> Assam Meghalaya <span><span>Starting at <strong
-                                                class="line-through">₹45,990*</strong> <strong>₹43,990*</strong> Per
-                                            person </span></span>
-                                </div>
-                                <div class="ad-right"><svg xmlns="http://www.w3.org/2000/svg" width="46" height="46"
-                                        viewBox="0 0 46 46" fill="none">
-                                        <path fill-rule="evenodd" clip-rule="evenodd"
-                                            d="M13.0711 33.4436C12.8627 33.2353 12.7374 32.961 12.7227 32.6811C12.708 32.4011 12.805 32.1385 12.9926 31.951L29.6693 15.2742L20.2763 14.7817C19.996 14.767 19.7214 14.6415 19.5128 14.4329C19.3042 14.2243 19.1787 13.9496 19.1639 13.6694C19.1492 13.3891 19.2464 13.1261 19.4342 12.9384C19.6219 12.7506 19.8849 12.6534 20.1651 12.6682L32.1062 13.2962C32.245 13.3033 32.3839 13.3378 32.515 13.3975C32.6461 13.4573 32.7667 13.5413 32.8701 13.6446C32.9734 13.748 33.0574 13.8686 33.1171 13.9997C33.1769 14.1308 33.2114 14.2697 33.2185 14.4085L33.8465 26.3495C33.8613 26.6298 33.7641 26.8928 33.5763 27.0805C33.3885 27.2683 33.1256 27.3655 32.8453 27.3507C32.5651 27.336 32.2904 27.2105 32.0818 27.0019C31.8732 26.7933 31.7477 26.5187 31.733 26.2384L31.2404 16.8454L14.5637 33.5221C14.3762 33.7097 14.1136 33.8067 13.8336 33.792C13.5537 33.7773 13.2794 33.652 13.0711 33.4436V33.4436Z"
-                                            fill="white" />
-                                    </svg></div>
-                            </a>
-                            <!-- </div> -->
-                        </div>
-                        <!-- </div> -->
-                    </div>
-                    <div class="getcallback2 gallery__img gallery__img--wide"
-                        style="background-image: url('.s3.ap-south-1.amazonaws.com/wp-content/uploads/2025/02/20250227_115909_home-holidays-gal7.jpg');"
-                        place='Thailand' product-type='' data-bs-toggle="modal" data-bs-target="#getcallback">
-                        <div class="gal-place">
-                            <a>
-                                <!-- <div> -->
-                                <div class="gal-left-text">
-                                    <div class="day-label">4N/5D</div> Thailand <span><span>Starting at <strong
-                                                class="line-through">₹20,990*</strong> <strong>₹18,990*</strong> Per
-                                            person </span></span>
-                                </div>
-                                <div class="ad-right"><svg xmlns="http://www.w3.org/2000/svg" width="46" height="46"
-                                        viewBox="0 0 46 46" fill="none">
-                                        <path fill-rule="evenodd" clip-rule="evenodd"
-                                            d="M13.0711 33.4436C12.8627 33.2353 12.7374 32.961 12.7227 32.6811C12.708 32.4011 12.805 32.1385 12.9926 31.951L29.6693 15.2742L20.2763 14.7817C19.996 14.767 19.7214 14.6415 19.5128 14.4329C19.3042 14.2243 19.1787 13.9496 19.1639 13.6694C19.1492 13.3891 19.2464 13.1261 19.4342 12.9384C19.6219 12.7506 19.8849 12.6534 20.1651 12.6682L32.1062 13.2962C32.245 13.3033 32.3839 13.3378 32.515 13.3975C32.6461 13.4573 32.7667 13.5413 32.8701 13.6446C32.9734 13.748 33.0574 13.8686 33.1171 13.9997C33.1769 14.1308 33.2114 14.2697 33.2185 14.4085L33.8465 26.3495C33.8613 26.6298 33.7641 26.8928 33.5763 27.0805C33.3885 27.2683 33.1256 27.3655 32.8453 27.3507C32.5651 27.336 32.2904 27.2105 32.0818 27.0019C31.8732 26.7933 31.7477 26.5187 31.733 26.2384L31.2404 16.8454L14.5637 33.5221C14.3762 33.7097 14.1136 33.8067 13.8336 33.792C13.5537 33.7773 13.2794 33.652 13.0711 33.4436V33.4436Z"
-                                            fill="white" />
-                                    </svg></div>
-                            </a>
-                            <!-- </div> -->
-                        </div>
-                        <!-- </div> -->
-                    </div>
-                    <div class="getcallback2 gallery__img gallery-small"
-                        style="background-image: url('.s3.ap-south-1.amazonaws.com/wp-content/uploads/2025/02/20250227_120014_home-holidays-gal8.jpg');"
-                        place='Singapore' product-type='' data-bs-toggle="modal" data-bs-target="#getcallback">
-                        <div class="gal-place">
-                            <a>
-                                <!-- <div> -->
-                                <div class="gal-left-text">
-                                    <div class="day-label">4N/5D</div> Singapore <span><span>Starting at <strong
-                                                class="line-through">₹41,990*</strong> <strong>₹39,990*</strong> Per
-                                            person </span></span>
-                                </div>
-                                <div class="ad-right"><svg xmlns="http://www.w3.org/2000/svg" width="46" height="46"
-                                        viewBox="0 0 46 46" fill="none">
-                                        <path fill-rule="evenodd" clip-rule="evenodd"
-                                            d="M13.0711 33.4436C12.8627 33.2353 12.7374 32.961 12.7227 32.6811C12.708 32.4011 12.805 32.1385 12.9926 31.951L29.6693 15.2742L20.2763 14.7817C19.996 14.767 19.7214 14.6415 19.5128 14.4329C19.3042 14.2243 19.1787 13.9496 19.1639 13.6694C19.1492 13.3891 19.2464 13.1261 19.4342 12.9384C19.6219 12.7506 19.8849 12.6534 20.1651 12.6682L32.1062 13.2962C32.245 13.3033 32.3839 13.3378 32.515 13.3975C32.6461 13.4573 32.7667 13.5413 32.8701 13.6446C32.9734 13.748 33.0574 13.8686 33.1171 13.9997C33.1769 14.1308 33.2114 14.2697 33.2185 14.4085L33.8465 26.3495C33.8613 26.6298 33.7641 26.8928 33.5763 27.0805C33.3885 27.2683 33.1256 27.3655 32.8453 27.3507C32.5651 27.336 32.2904 27.2105 32.0818 27.0019C31.8732 26.7933 31.7477 26.5187 31.733 26.2384L31.2404 16.8454L14.5637 33.5221C14.3762 33.7097 14.1136 33.8067 13.8336 33.792C13.5537 33.7773 13.2794 33.652 13.0711 33.4436V33.4436Z"
-                                            fill="white" />
-                                    </svg></div>
-                            </a>
-                            <!-- </div> -->
-                        </div>
-                        <!-- </div> -->
-                    </div>
-                    <div class="getcallback2 gallery__img gallery-small"
-                        style="background-image: url('.s3.ap-south-1.amazonaws.com/wp-content/uploads/2025/02/20250227_120228_home-holidays-gal9.jpg');"
-                        place='Dubai &#8211; Abu Dhabi' product-type='' data-bs-toggle="modal"
-                        data-bs-target="#getcallback">
-                        <div class="gal-place">
-                            <a>
-                                <!-- <div> -->
-                                <div class="gal-left-text">
-                                    <div class="day-label">6N/7D</div> Dubai &#8211; Abu Dhabi <span><span>Starting at
-                                            <strong class="line-through">₹55,990*</strong> <strong>₹50,990*</strong> Per
-                                            person </span></span>
-                                </div>
-                                <div class="ad-right"><svg xmlns="http://www.w3.org/2000/svg" width="46" height="46"
-                                        viewBox="0 0 46 46" fill="none">
-                                        <path fill-rule="evenodd" clip-rule="evenodd"
-                                            d="M13.0711 33.4436C12.8627 33.2353 12.7374 32.961 12.7227 32.6811C12.708 32.4011 12.805 32.1385 12.9926 31.951L29.6693 15.2742L20.2763 14.7817C19.996 14.767 19.7214 14.6415 19.5128 14.4329C19.3042 14.2243 19.1787 13.9496 19.1639 13.6694C19.1492 13.3891 19.2464 13.1261 19.4342 12.9384C19.6219 12.7506 19.8849 12.6534 20.1651 12.6682L32.1062 13.2962C32.245 13.3033 32.3839 13.3378 32.515 13.3975C32.6461 13.4573 32.7667 13.5413 32.8701 13.6446C32.9734 13.748 33.0574 13.8686 33.1171 13.9997C33.1769 14.1308 33.2114 14.2697 33.2185 14.4085L33.8465 26.3495C33.8613 26.6298 33.7641 26.8928 33.5763 27.0805C33.3885 27.2683 33.1256 27.3655 32.8453 27.3507C32.5651 27.336 32.2904 27.2105 32.0818 27.0019C31.8732 26.7933 31.7477 26.5187 31.733 26.2384L31.2404 16.8454L14.5637 33.5221C14.3762 33.7097 14.1136 33.8067 13.8336 33.792C13.5537 33.7773 13.2794 33.652 13.0711 33.4436V33.4436Z"
-                                            fill="white" />
-                                    </svg></div>
-                            </a>
-                            <!-- </div> -->
-                        </div>
-                        <!-- </div> -->
-                    </div>
-                    <div class="getcallback2 gallery__img gallery__img--wide"
-                        style="background-image: url('.s3.ap-south-1.amazonaws.com/wp-content/uploads/2025/02/20250227_120355_home-holidays-gal10.jpg');"
-                        place='Malaysia' product-type='' data-bs-toggle="modal" data-bs-target="#getcallback">
-                        <div class="gal-place">
-                            <a>
-                                <!-- <div> -->
-                                <div class="gal-left-text">
-                                    <div class="day-label">5N/6D</div> Malaysia <span><span>Starting at <strong
-                                                class="line-through">₹25,990*</strong> <strong>₹21,990*</strong> Per
-                                            person </span></span>
-                                </div>
-                                <div class="ad-right"><svg xmlns="http://www.w3.org/2000/svg" width="46" height="46"
-                                        viewBox="0 0 46 46" fill="none">
-                                        <path fill-rule="evenodd" clip-rule="evenodd"
-                                            d="M13.0711 33.4436C12.8627 33.2353 12.7374 32.961 12.7227 32.6811C12.708 32.4011 12.805 32.1385 12.9926 31.951L29.6693 15.2742L20.2763 14.7817C19.996 14.767 19.7214 14.6415 19.5128 14.4329C19.3042 14.2243 19.1787 13.9496 19.1639 13.6694C19.1492 13.3891 19.2464 13.1261 19.4342 12.9384C19.6219 12.7506 19.8849 12.6534 20.1651 12.6682L32.1062 13.2962C32.245 13.3033 32.3839 13.3378 32.515 13.3975C32.6461 13.4573 32.7667 13.5413 32.8701 13.6446C32.9734 13.748 33.0574 13.8686 33.1171 13.9997C33.1769 14.1308 33.2114 14.2697 33.2185 14.4085L33.8465 26.3495C33.8613 26.6298 33.7641 26.8928 33.5763 27.0805C33.3885 27.2683 33.1256 27.3655 32.8453 27.3507C32.5651 27.336 32.2904 27.2105 32.0818 27.0019C31.8732 26.7933 31.7477 26.5187 31.733 26.2384L31.2404 16.8454L14.5637 33.5221C14.3762 33.7097 14.1136 33.8067 13.8336 33.792C13.5537 33.7773 13.2794 33.652 13.0711 33.4436V33.4436Z"
-                                            fill="white" />
-                                    </svg></div>
-                            </a>
-                            <!-- </div> -->
-                        </div>
-                        <!-- </div> -->
-                    </div>
-                </div>
-            </div>
-    </Section>
 
 
     <!-- <div class="content" data-animation="slideInLeft" data-animation-delay="300ms">
@@ -2784,7 +1562,7 @@
         <div class="container">
             <div class="row">
                 <h1 class="text-center" data-animation="slideInDown" data-animation-delay="0.15s">FLY WORLDWIDE WITH
-                    <span class="hotdeals">RIYA.TRAVEL</span>
+                    <span class="hotdeals">HIMASARA DMC HOLIDAYS PRIVATE LTD</span>
                 </h1>
                 <h6 class="subhead text-center" data-animation="slideInUp" data-animation-delay="0.2s">Flights from
                     wherever you are to wherever you want to go</h6>
@@ -2794,7 +1572,7 @@
                     data-bs-toggle="modal" data-bs-target="#getcallback" data-animation="zoomIn"
                     data-animation-delay="200ms">
                     <div class="box">
-                        <img src="https://riya.travel/wp-content/uploads/2024/08/insurance-3.png" />
+                        <img src="https://i.pinimg.com/736x/60/55/d9/6055d9538165b369bcf35481189c8dd1.jpg" />
                     </div>
                     <div class="card-body">
                         <div class="row">
@@ -2823,14 +1601,14 @@
                         </div>
                     </div>
                     <div class="box">
-                        <img src="https://riya.travel/wp-content/uploads/2024/08/Forex.png" />
+                        <img src="https://i.pinimg.com/736x/66/25/b2/6625b2ee33a6997c314c4093f300c113.jpg" />
                     </div>
                 </div>
                 <div class="getcallback2 col-lg-4 col-md-4 col-sm-12" product_type='visa' place=''
                     data-bs-toggle="modal" data-bs-target="#getcallback" data-animation="zoomIn"
                     data-animation-delay="200ms">
                     <div class="box">
-                        <img src="https://riya.travel/wp-content/uploads/2024/08/visa-service.png" />
+                        <img src="https://i.pinimg.com/736x/2e/eb/f9/2eebf9f46b72bb0846939f169c186706.jpg" />
                     </div>
                     <div class="card-body">
                         <div class="row">
@@ -2900,8 +1678,7 @@
                 <div class="col-lg-3 col-md-3 col-6" data-animation="slideInUp" data-animation-delay="0.2s">
                     <h5 class="font-weight-bold text-uppercase">OUR PRODUCTS</h5>
                     <ul class="list-group">
-                        <li class="list-group-item bg-transparent border-0 p-0"><a
-                                href="#">Flight Booking</a></li>
+                        <li class="list-group-item bg-transparent border-0 p-0"><a href="#">Flight Booking</a></li>
                         <li class="list-group-item bg-transparent border-0 p-0"><a href="#" data-id="main_menu3"
                                 onclick="homeFormTab('main_menu3','holidays-main','')">Holidays Packages</a></li>
                         <li class="list-group-item bg-transparent border-0 p-0"><a href="#" data-id="main_menu4"
@@ -2919,8 +1696,8 @@
                         <li class="list-group-item bg-transparent border-0 p-0"><a href="#">Bus</a></li>
                         <li class="list-group-item bg-transparent border-0 p-0"><a href="#" data-id="main_menu6"
                                 onclick="homeFormTab('main_menu6','cab-bg','')">Car</a></li>
-                        <li class="list-group-item bg-transparent border-0 p-0"><a
-                                href="#" target="_blank">Holyland</a></li>
+                        <li class="list-group-item bg-transparent border-0 p-0"><a href="#" target="_blank">Holyland</a>
+                        </li>
                         <li class="list-group-item bg-transparent border-0 p-0"><a href="#" data-id="main_menu5"
                                 onclick="homeFormTab('main_menu5','rail-bg','')">Rail Europe</a></li>
                     </ul>
@@ -2929,27 +1706,21 @@
                     <h5 class="font-weight-bold text-uppercase">ABOUT US</h5>
                     <ul class="list-group">
 
-                        <li class="list-group-item bg-transparent border-0 p-0"><a
-                                href="#">About Us</a></li>
+                        <li class="list-group-item bg-transparent border-0 p-0"><a href="#">About Us</a></li>
 
-                        <li class="list-group-item bg-transparent border-0 p-0"><a
-                                href="#">Privacy Policy</a></li>
+                        <li class="list-group-item bg-transparent border-0 p-0"><a href="#">Privacy Policy</a></li>
 
-                        <li class="list-group-item bg-transparent border-0 p-0"><a
-                                href="#">Terms and Conditions</a></li>
-                        <li class="list-group-item bg-transparent border-0 p-0"><a
-                                href="#">Disclaimer</a></li>
-                        <li class="list-group-item bg-transparent border-0 p-0"><a
-                                href="#">Security</a></li>
-                        <li class="list-group-item bg-transparent border-0 p-0"><a
-                                href="#" target="_blank">Careers</a></li>
-                        <li class="list-group-item bg-transparent border-0 p-0"><a
-                                href="#" target="_blank">Media</a></li>
+                        <li class="list-group-item bg-transparent border-0 p-0"><a href="#">Terms and Conditions</a>
+                        </li>
+                        <li class="list-group-item bg-transparent border-0 p-0"><a href="#">Disclaimer</a></li>
+                        <li class="list-group-item bg-transparent border-0 p-0"><a href="#">Security</a></li>
+                        <li class="list-group-item bg-transparent border-0 p-0"><a href="#" target="_blank">Careers</a>
+                        </li>
+                        <li class="list-group-item bg-transparent border-0 p-0"><a href="#" target="_blank">Media</a>
+                        </li>
                         <li class="list-group-item bg-transparent border-0 p-0"><a href="#">Customer Support
                             </a></li>
-                        <li class="list-group-item bg-transparent border-0 p-0"><a
-                                href="#"
-                                target="_blank">CSR
+                        <li class="list-group-item bg-transparent border-0 p-0"><a href="#" target="_blank">CSR
                                 Policy</a></li>
 
                     </ul>
@@ -2957,21 +1728,16 @@
                 <div class="col-lg-3 col-md-3 col-6" data-animation="slideInUp" data-animation-delay="0.2s">
                     <h5 class="font-weight-bold text-uppercase">TRAVEL ESSENTIALS</h5>
                     <ul class="list-group">
-                        <li class="list-group-item bg-transparent border-0 p-0"><a
-                                href="#">Flight Status
+                        <li class="list-group-item bg-transparent border-0 p-0"><a href="#">Flight Status
                             </a></li>
-                        <li class="list-group-item bg-transparent border-0 p-0"><a
-                                href="#">Offers</a></li>
+                        <li class="list-group-item bg-transparent border-0 p-0"><a href="#">Offers</a></li>
                         <!--li class="list-group-item bg-transparent border-0 p-0"><a href="#">Cheap Air Ticket</a></li-->
-                        <li class="list-group-item bg-transparent border-0 p-0"><a
-                                href="#">Airlines Details
+                        <li class="list-group-item bg-transparent border-0 p-0"><a href="#">Airlines Details
                             </a></li>
-                        <li class="list-group-item bg-transparent border-0 p-0"><a
-                                href="#">Domestic Airlines
+                        <li class="list-group-item bg-transparent border-0 p-0"><a href="#">Domestic Airlines
                             </a></li>
 
-                        <li class="list-group-item bg-transparent border-0 p-0"><a
-                                href="#">International Airlines
+                        <li class="list-group-item bg-transparent border-0 p-0"><a href="#">International Airlines
                             </a></li>
 
                         <!--li class="list-group-item bg-transparent border-0 p-0"><a href="#">Visa Status
