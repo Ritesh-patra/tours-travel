@@ -10,8 +10,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
 
-    <title>Riya Travels | Online Travel Website &#8211; Flights, Hotels, Holidays, Visa, Forex, Travel Insurance &#8211;
-        Riya Travel India</title>
+    <title>Tors</title>
 
 
 
@@ -560,9 +559,9 @@
 
     <!--header-->
 
-    <section
-        class="bg-no-repeat w-full h-full bg-center bg-cover bg-[url('images/landing.jpg')]  "
-        id="mainSection">
+    <section class="bg-no-repeat w-full h-full bg-center bg-cover 
+    bg-[url('images/landing-mobile.jpg')] 
+    md:bg-[url('images/landing.jpg')]" id="mainSection">
 
         <style>
             /* Tooltip text */
@@ -622,6 +621,8 @@
                     });
                 }
             });
+
+           
         </script>
         </header>
 
@@ -631,9 +632,12 @@
                 <div class="row">
                     <div class="col-lg-12 col-md-12 mb-8 col-sm-12 ">
                         <div class="product-list-slider text-white">
-                            <a href="javascript:void(0);" data-id="main_menu1" class="menu-item active"><span
-                                    class="pro-icon-box"><span class="slk-ico flight-icon "></span> </span><span
-                                    class="prod-name">Flights</span> </a>
+                            <a href="javascript:void(0);" data-id="main_menu1" class="menu-item active"
+                                onclick="changeBgToFlight()">
+                                <span class="pro-icon-box"><span class="slk-ico flight-icon"></span></span>
+                                <span class="prod-name">Flights</span>
+                            </a>
+
 
 
                             <a href="javascript:void(0);" data-id="main_menu2"
@@ -686,7 +690,7 @@
 
 
                         </div>
-                        <div class="w-full h-[70vh] sm:h-[30vw]   flex items-center justify-center"></div>
+                        <div class="w-full h-[70vh] sm:h-[30vw]   flex items-center justify-center border-none"></div>
                     </div>
                 </div>
 
@@ -1183,14 +1187,10 @@
                             <a target="_blank" href="">
                                 <div class="offer-details">
                                     <div class="offerlogo">
-                                        <img class="scale-90" src="images/offer1.jpg"
-                                            alt="" />
+                                        <img src="https://riya-b2c.s3.ap-south-1.amazonaws.com/wp-content/uploads/2025/02/20250227_121247_offer-holidays6.jpg"
+                                        alt="" />
                                     </div>
-                                    <div class="offer-info">
-                                        <h5>Trip With Kids at 10%* OFF</h5>
-                                        <p>Li’l ones travel for less!</p>
-                                        <span>Valid up to </span>
-                                    </div>
+
                                 </div>
                             </a>
                         </li>
@@ -1201,58 +1201,44 @@
                                         <img src="https://riya-b2c.s3.ap-south-1.amazonaws.com/wp-content/uploads/2025/02/20250227_121056_offer-holidays5.jpg"
                                             alt="" />
                                     </div>
-                                    <div class="offer-info">
-                                        <h5>Trip With Kids at 10%* OFF</h5>
-                                        <p>Li’l ones travel for less!</p>
-                                        <span>Valid up to </span>
-                                    </div>
+
                                 </div>
                             </a>
                         </li>
                         <li class="swiper-slide cat_8">
                             <a target="_blank" href="#"">
-                                <div class="offer-details">
-                                    <div class="offerlogo">
-                                        <img src="https://riya-b2c.s3.ap-south-1.amazonaws.com/wp-content/uploads/2025/02/20250227_121247_offer-holidays6.jpg"
-                                            alt="" />
-                                    </div>
-                                    <div class="offer-info">
-                                        <h5>Complimentary Travel Insurance</h5>
-                                        <p>Secured trip guaranteed</p>
-                                        <span>Valid up to </span>
-                                    </div>
+                                <div class=" offer-details">
+                                <div class="offerlogo">
+                                    <img src="https://riya-b2c.s3.ap-south-1.amazonaws.com/wp-content/uploads/2025/02/20250227_121247_offer-holidays6.jpg"
+                                        alt="" />
                                 </div>
-                            </a>
-                        </li>
-                        <li class="swiper-slide cat_8">
-                            <a target="_blank" href="#">
-                                <div class="offer-details">
-                                    <div class="offerlogo">
-                                        <img src="https://riya.travel/wp-content/uploads/2024/12/offer-visa3.jpg"
-                                            alt="" />
-                                    </div>
-                                    <div class="offer-info">
-                                        <h5>Room Upgrade &#8211; Complimentary</h5>
-                                        <p>Level up to a luxe stay</p>
-                                        <span>Valid up to </span>
-                                    </div>
-                                </div>
-                            </a>
-                        </li>
-                    </ul>
 
-                    <div class="slider-controls">
-                        <span class="prevSlide"><i class="fa fa-long-arrow-left"></i></span>
-                        <span class="nextSlide"><i class="fa fa-long-arrow-right"></i></span>
-                    </div>
                 </div>
+                </a>
+                </li>
+                <li class="swiper-slide cat_8">
+                    <a target="_blank" href="#">
+                        <div class="offer-details">
+                            <div class="offerlogo">
+                                <img src="https://riya.travel/wp-content/uploads/2024/12/offer-visa3.jpg" alt="" />
+                            </div>
 
-                <div class="row">
-                    <div class="offer-banner" data-animation="zoomIn" data-animation-delay="0.31s">
-                        <!-- <img src="https://riya.travel/wp-content/themes/RiyaTravels/assets/images/offer-banner.png" class="img-fluids" alt=""> -->
-                    </div>
+                    </a>
+                </li>
+                </ul>
+
+                <div class="slider-controls">
+                    <span class="prevSlide"><i class="fa fa-long-arrow-left"></i></span>
+                    <span class="nextSlide"><i class="fa fa-long-arrow-right"></i></span>
                 </div>
             </div>
+
+            <div class="row">
+                <div class="offer-banner" data-animation="zoomIn" data-animation-delay="0.31s">
+                    <!-- <img src="https://riya.travel/wp-content/themes/RiyaTravels/assets/images/offer-banner.png" class="img-fluids" alt=""> -->
+                </div>
+            </div>
+        </div>
     </section>
 
 
@@ -1881,4 +1867,8 @@
         }
         ]
     });
+
+    function changeBgToFlight() {
+                $("#background-container").css("background-image", "url('images/landing.jpg')");
+            }
 </script>

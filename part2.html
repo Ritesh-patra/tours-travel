@@ -1,0 +1,890 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wanderlust - Tours & Travels</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/three@0.132.2/build/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.11.4/dist/gsap.min.js"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        .travel-icon {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .travel-icon:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+
+        .destination-card {
+            transition: transform 0.5s ease, box-shadow 0.5s ease;
+            transform-style: preserve-3d;
+            perspective: 1000px;
+        }
+
+        .destination-card:hover {
+            transform: scale(1.03) rotateY(5deg);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+
+        .slider {
+            scroll-snap-type: x mandatory;
+            scroll-behavior: smooth;
+        }
+
+        .slider-item {
+            scroll-snap-align: start;
+        }
+
+        #hero-canvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: -1;
+        }
+
+        .parallax {
+            background-attachment: fixed;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+
+        /* Hide scrollbar but allow scrolling */
+        #nav-container::-webkit-scrollbar {
+            display: none;
+        }
+
+        #nav-container {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+
+        /* Ensure items don't shrink */
+        .travel-icon {
+            flex-shrink: 0;
+        }
+    </style>
+</head>
+
+<body class="bg-gray-50">
+    <!-- Main Navigation -->
+    <nav class="bg-white shadow-md fixed w-full z-50">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16">
+                <div class="flex items-center">
+                    <a href="#" class="flex-shrink-0 flex items-center">
+                        <span class="text-2xl font-bold text-blue-600">Wanderlust</span>
+                    </a>
+                    <div class="hidden md:ml-6 md:flex md:space-x-8">
+                        <a href="#"
+                            class="border-b-2 border-blue-500 text-gray-900 inline-flex items-center px-1 pt-1 text-sm font-medium">Home</a>
+                        <a href="#destinations"
+                            class="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">Destinations</a>
+                        <a href="#deals"
+                            class="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">Deals</a>
+                        <a href="#about"
+                            class="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">About</a>
+                        <a href="#contact"
+                            class="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">Contact</a>
+                    </div>
+                </div>
+                <div class="hidden md:flex items-center">
+                    <button
+                        class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-md text-sm font-medium">Login</button>
+                    <button
+                        class="ml-4 bg-transparent hover:bg-blue-50 text-blue-600 border border-blue-600 px-4 py-2 rounded-md text-sm font-medium">Sign
+                        Up</button>
+                </div>
+                <div class="flex items-center md:hidden">
+                    <button id="mobile-menu-button"
+                        class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-blue-500">
+                        <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                            stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M4 6h16M4 12h16M4 18h16" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile menu, show/hide based on menu state -->
+        <div id="mobile-menu" class="md:hidden hidden">
+            <div class="pt-2 pb-3 space-y-1">
+                <a href="#"
+                    class="bg-blue-50 border-l-4 border-blue-500 text-blue-700 block pl-3 pr-4 py-2 text-base font-medium">Home</a>
+                <a href="#destinations"
+                    class="border-transparent text-gray-500 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-700 block pl-3 pr-4 py-2 border-l-4 text-base font-medium">Destinations</a>
+                <a href="#deals"
+                    class="border-transparent text-gray-500 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-700 block pl-3 pr-4 py-2 border-l-4 text-base font-medium">Deals</a>
+                <a href="#about"
+                    class="border-transparent text-gray-500 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-700 block pl-3 pr-4 py-2 border-l-4 text-base font-medium">About</a>
+                <a href="#contact"
+                    class="border-transparent text-gray-500 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-700 block pl-3 pr-4 py-2 border-l-4 text-base font-medium">Contact</a>
+            </div>
+            <div class="pt-4 pb-3 border-t border-gray-200">
+                <div class="flex items-center px-4">
+                    <button
+                        class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-md text-sm font-medium w-full">Login</button>
+                </div>
+                <div class="mt-3 flex items-center px-4">
+                    <button
+                        class="bg-transparent hover:bg-blue-50 text-blue-600 border border-blue-600 px-4 py-2 rounded-md text-sm font-medium w-full">Sign
+                        Up</button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Secondary Navigation with Icons -->
+    <div class="bg-white shadow-sm pt-16">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative">
+            <!-- Left Arrow (Mobile Only) -->
+            <button id="nav-prev"
+                class="md:hidden absolute left-2 top-1/2 transform -translate-y-1/2 bg-white rounded-full p-2 shadow-md z-10">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-600" fill="none" viewBox="0 0 24 24"
+                    stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+                </svg>
+            </button>
+
+            <!-- Navigation Items -->
+            <div class="flex overflow-x-hidden py-4 space-x-8 justify-between scroll-smooth" id="nav-container">
+                <div class="travel-icon flex flex-col items-center p-2 rounded-lg cursor-pointer min-w-[80px]">
+                    <div class="bg-blue-100  rounded-full">
+                        <img src="images/flights1.png" class="w-8 h-8 rounded-full" alt="Flights">
+                    </div>
+                    <span class="mt-2 text-sm font-medium text-gray-700">Flights</span>
+                </div>
+                <div class="travel-icon flex flex-col items-center p-2 rounded-lg cursor-pointer min-w-[80px]">
+                    <div class="bg-green-100  rounded-full">
+                        <img src="images/train.png" class="w-8 h-8 rounded-full" alt="Trains">
+                    </div>
+                    <span class="mt-2 text-sm font-medium text-gray-700">Trains</span>
+                </div>
+                <div class="travel-icon flex flex-col items-center p-2 rounded-lg cursor-pointer min-w-[80px]">
+                    <div class="bg-yellow-100  rounded-full">
+                        <img src="images/hotel2.png" class="w-8 h-8 rounded-full" alt="Hotels">
+                    </div>
+                    <span class="mt-2 text-sm font-medium text-gray-700">Hotels</span>
+                </div>
+                <div class="travel-icon flex flex-col items-center p-2 rounded-lg cursor-pointer min-w-[80px]">
+                    <div class="bg-purple-100  rounded-full">
+                        <img src="images/cab.png" class="w-8 h-8 rounded-full" alt="Cabs">
+                    </div>
+                    <span class="mt-2 text-sm font-medium text-gray-700">Cabs</span>
+                </div>
+                <div class="travel-icon flex flex-col items-center p-2 rounded-lg cursor-pointer min-w-[80px]">
+                    <div class="bg-red-100  rounded-full">
+                        <img src="images/visa.png" class="w-8 h-8 rounded-full" alt="Visa">
+                    </div>
+                    <span class="mt-2 text-sm font-medium text-gray-700">Visa</span>
+                </div>
+                <div class="travel-icon flex flex-col items-center p-2 rounded-lg cursor-pointer min-w-[80px]">
+                    <div class="bg-indigo-100  rounded-full">
+                        <img src="images/forex.png" class="w-8 h-8 rounded-full" alt="Forex">
+                    </div>
+                    <span class="mt-2 text-sm font-medium text-gray-700">Forex</span>
+                </div>
+                <div class="travel-icon flex flex-col items-center p-2 rounded-lg cursor-pointer min-w-[80px]">
+                    <div class="bg-pink-100  rounded-full">
+                        <img src="images/holidays.png" class="w-8 h-8 rounded-full" alt="Holidays">
+                    </div>
+                    <span class="mt-2 text-sm font-medium text-gray-700">Holidays</span>
+                </div>
+            </div>
+
+            <!-- Right Arrow (Mobile Only) -->
+            <button id="nav-next"
+                class="md:hidden absolute right-2 top-1/2 transform -translate-y-1/2 bg-white rounded-full p-2 shadow-md z-10">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-600" fill="none" viewBox="0 0 24 24"
+                    stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                </svg>
+            </button>
+        </div>
+    </div>
+
+<!-- Hero Section with 3D Background -->
+<div class="relative h-screen flex items-center justify-center overflow-hidden">
+    <!-- Desktop Image (shown on md screens and up) -->
+    <canvas
+        style="background-image: url('images/landing.jpg'); background-position: center; background-size: contain;"
+        id="hero-canvas" 
+        class="absolute top-0 left-0 w-full h-full hidden md:block">
+    </canvas>
+    
+    <!-- Mobile Image (shown on screens smaller than md) -->
+    <canvas
+        style="background-image: url('images/HIMASARA\ DMC\ HOLIDAYS\ 375\ px\ x\ 667px.jpg'); background-position: center; background-size: cover;"
+        id="hero-canvas-mobile" 
+        class="absolute top-0 left-0 w-full h-full block md:hidden">
+    </canvas>
+</div>
+    <!-- Hot Deals Section -->
+    <section id="deals" class="py-16 bg-white">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl font-bold text-center mb-12">Explore Hot Deals & Offers</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden destination-card">
+                    <div class="relative">
+                        <img src="https://source.unsplash.com/random/600x400/?bali" alt="Bali"
+                            class="w-full h-48 object-cover">
+                        <div class="absolute top-0 right-0 bg-red-500 text-white px-4 py-1 rounded-bl-lg font-bold">
+                            30% OFF
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Bali Adventure</h3>
+                        <div class="flex items-center mb-2">
+                            <i class="fas fa-star text-yellow-400"></i>
+                            <i class="fas fa-star text-yellow-400"></i>
+                            <i class="fas fa-star text-yellow-400"></i>
+                            <i class="fas fa-star text-yellow-400"></i>
+                            <i class="fas fa-star-half-alt text-yellow-400"></i>
+                            <span class="ml-2 text-gray-600 text-sm">(128 reviews)</span>
+                        </div>
+                        <p class="text-gray-600 mb-4">7 days of tropical paradise with beach activities and cultural
+                            tours.</p>
+                        <div class="flex justify-between items-center">
+                            <div>
+                                <span class="text-gray-400 line-through">$1,299</span>
+                                <span class="text-2xl font-bold text-blue-600">$899</span>
+                            </div>
+                            <button
+                                class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-md text-sm font-medium">Book
+                                Now</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden destination-card">
+                    <div class="relative">
+                        <img src="https://source.unsplash.com/random/600x400/?paris" alt="Paris"
+                            class="w-full h-48 object-cover">
+                        <div class="absolute top-0 right-0 bg-red-500 text-white px-4 py-1 rounded-bl-lg font-bold">
+                            25% OFF
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Paris Getaway</h3>
+                        <div class="flex items-center mb-2">
+                            <i class="fas fa-star text-yellow-400"></i>
+                            <i class="fas fa-star text-yellow-400"></i>
+                            <i class="fas fa-star text-yellow-400"></i>
+                            <i class="fas fa-star text-yellow-400"></i>
+                            <i class="fas fa-star text-yellow-400"></i>
+                            <span class="ml-2 text-gray-600 text-sm">(210 reviews)</span>
+                        </div>
+                        <p class="text-gray-600 mb-4">5 days in the city of love with guided tours and luxury
+                            accommodation.</p>
+                        <div class="flex justify-between items-center">
+                            <div>
+                                <span class="text-gray-400 line-through">$1,599</span>
+                                <span class="text-2xl font-bold text-blue-600">$1,199</span>
+                            </div>
+                            <button
+                                class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-md text-sm font-medium">Book
+                                Now</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden destination-card">
+                    <div class="relative">
+                        <img src="https://source.unsplash.com/random/600x400/?maldives" alt="Maldives"
+                            class="w-full h-48 object-cover">
+                        <div class="absolute top-0 right-0 bg-red-500 text-white px-4 py-1 rounded-bl-lg font-bold">
+                            40% OFF
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Maldives Luxury</h3>
+                        <div class="flex items-center mb-2">
+                            <i class="fas fa-star text-yellow-400"></i>
+                            <i class="fas fa-star text-yellow-400"></i>
+                            <i class="fas fa-star text-yellow-400"></i>
+                            <i class="fas fa-star text-yellow-400"></i>
+                            <i class="fas fa-star-half-alt text-yellow-400"></i>
+                            <span class="ml-2 text-gray-600 text-sm">(95 reviews)</span>
+                        </div>
+                        <p class="text-gray-600 mb-4">5 nights in an overwater bungalow with all-inclusive meals and
+                            activities.</p>
+                        <div class="flex justify-between items-center">
+                            <div>
+                                <span class="text-gray-400 line-through">$2,499</span>
+                                <span class="text-2xl font-bold text-blue-600">$1,499</span>
+                            </div>
+                            <button
+                                class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-md text-sm font-medium">Book
+                                Now</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="text-center mt-10">
+                <a href="#"
+                    class="inline-flex items-center px-6 py-3 border border-blue-600 text-blue-600 bg-transparent rounded-md hover:bg-blue-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
+                    View All Deals
+                    <svg class="ml-2 -mr-1 w-5 h-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                        stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Top 10 Trending Destinations Section with Slider -->
+    <section id="destinations" class="py-16 bg-gray-50">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl font-bold text-center mb-12">Top 10 Trending Destinations</h2>
+
+            <div class="relative">
+                <div class="slider flex overflow-x-auto pb-8 -mx-4 hide-scrollbar">
+                    <div class="slider-item flex-none w-full sm:w-1/2 md:w-1/3 lg:w-1/4 px-4">
+                        <div class="bg-white rounded-lg shadow-lg overflow-hidden destination-card h-full">
+                            <img src="https://source.unsplash.com/random/600x400/?santorini" alt="Santorini"
+                                class="w-full h-48 object-cover">
+                            <div class="p-6">
+                                <span
+                                    class="inline-block bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded-full uppercase font-semibold tracking-wide mb-2">Greece</span>
+                                <h3 class="text-xl font-bold mb-2">Santorini</h3>
+                                <p class="text-gray-600 mb-4">Famous for its stunning sunsets, white-washed buildings
+                                    and blue domes.</p>
+                                <div class="flex justify-between items-center">
+                                    <div class="flex items-center">
+                                        <i class="fas fa-star text-yellow-400"></i>
+                                        <span class="ml-1 text-gray-600">4.8</span>
+                                    </div>
+                                    <span class="text-blue-600 font-bold">From $899</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="slider-item flex-none w-full sm:w-1/2 md:w-1/3 lg:w-1/4 px-4">
+                        <div class="bg-white rounded-lg shadow-lg overflow-hidden destination-card h-full">
+                            <img src="https://source.unsplash.com/random/600x400/?tokyo" alt="Tokyo"
+                                class="w-full h-48 object-cover">
+                            <div class="p-6">
+                                <span
+                                    class="inline-block bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded-full uppercase font-semibold tracking-wide mb-2">Japan</span>
+                                <h3 class="text-xl font-bold mb-2">Tokyo</h3>
+                                <p class="text-gray-600 mb-4">A fascinating blend of traditional and ultramodern
+                                    culture.</p>
+                                <div class="flex justify-between items-center">
+                                    <div class="flex items-center">
+                                        <i class="fas fa-star text-yellow-400"></i>
+                                        <span class="ml-1 text-gray-600">4.7</span>
+                                    </div>
+                                    <span class="text-blue-600 font-bold">From $1,199</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="slider-item flex-none w-full sm:w-1/2 md:w-1/3 lg:w-1/4 px-4">
+                        <div class="bg-white rounded-lg shadow-lg overflow-hidden destination-card h-full">
+                            <img src="https://source.unsplash.com/random/600x400/?bora-bora" alt="Bora Bora"
+                                class="w-full h-48 object-cover">
+                            <div class="p-6">
+                                <span
+                                    class="inline-block bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded-full uppercase font-semibold tracking-wide mb-2">French
+                                    Polynesia</span>
+                                <h3 class="text-xl font-bold mb-2">Bora Bora</h3>
+                                <p class="text-gray-600 mb-4">Pristine turquoise lagoons and overwater bungalows.</p>
+                                <div class="flex justify-between items-center">
+                                    <div class="flex items-center">
+                                        <i class="fas fa-star text-yellow-400"></i>
+                                        <span class="ml-1 text-gray-600">4.9</span>
+                                    </div>
+                                    <span class="text-blue-600 font-bold">From $2,299</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="slider-item flex-none w-full sm:w-1/2 md:w-1/3 lg:w-1/4 px-4">
+                        <div class="bg-white rounded-lg shadow-lg overflow-hidden destination-card h-full">
+                            <img src="https://source.unsplash.com/random/600x400/?rome" alt="Rome"
+                                class="w-full h-48 object-cover">
+                            <div class="p-6">
+                                <span
+                                    class="inline-block bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded-full uppercase font-semibold tracking-wide mb-2">Italy</span>
+                                <h3 class="text-xl font-bold mb-2">Rome</h3>
+                                <p class="text-gray-600 mb-4">Ancient ruins, art treasures and vibrant street life.</p>
+                                <div class="flex justify-between items-center">
+                                    <div class="flex items-center">
+                                        <i class="fas fa-star text-yellow-400"></i>
+                                        <span class="ml-1 text-gray-600">4.6</span>
+                                    </div>
+                                    <span class="text-blue-600 font-bold">From $799</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="slider-item flex-none w-full sm:w-1/2 md:w-1/3 lg:w-1/4 px-4">
+                        <div class="bg-white rounded-lg shadow-lg overflow-hidden destination-card h-full">
+                            <img src="https://source.unsplash.com/random/600x400/?new-york" alt="New York"
+                                class="w-full h-48 object-cover">
+                            <div class="p-6">
+                                <span
+                                    class="inline-block bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded-full uppercase font-semibold tracking-wide mb-2">USA</span>
+                                <h3 class="text-xl font-bold mb-2">New York</h3>
+                                <p class="text-gray-600 mb-4">The city that never sleeps with iconic landmarks and
+                                    vibrant culture.</p>
+                                <div class="flex justify-between items-center">
+                                    <div class="flex items-center">
+                                        <i class="fas fa-star text-yellow-400"></i>
+                                        <span class="ml-1 text-gray-600">4.5</span>
+                                    </div>
+                                    <span class="text-blue-600 font-bold">From $999</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="slider-item flex-none w-full sm:w-1/2 md:w-1/3 lg:w-1/4 px-4">
+                        <div class="bg-white rounded-lg shadow-lg overflow-hidden destination-card h-full">
+                            <img src="https://source.unsplash.com/random/600x400/?dubai" alt="Dubai"
+                                class="w-full h-48 object-cover">
+                            <div class="p-6">
+                                <span
+                                    class="inline-block bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded-full uppercase font-semibold tracking-wide mb-2">UAE</span>
+                                <h3 class="text-xl font-bold mb-2">Dubai</h3>
+                                <p class="text-gray-600 mb-4">Futuristic architecture, luxury shopping and desert
+                                    adventures.</p>
+                                <div class="flex justify-between items-center">
+                                    <div class="flex items-center">
+                                        <i class="fas fa-star text-yellow-400"></i>
+                                        <span class="ml-1 text-gray-600">4.7</span>
+                                    </div>
+                                    <span class="text-blue-600 font-bold">From $1,099</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="slider-item flex-none w-full sm:w-1/2 md:w-1/3 lg:w-1/4 px-4">
+                        <div class="bg-white rounded-lg shadow-lg overflow-hidden destination-card h-full">
+                            <img src="https://source.unsplash.com/random/600x400/?sydney" alt="Sydney"
+                                class="w-full h-48 object-cover">
+                            <div class="p-6">
+                                <span
+                                    class="inline-block bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded-full uppercase font-semibold tracking-wide mb-2">Australia</span>
+                                <h3 class="text-xl font-bold mb-2">Sydney</h3>
+                                <p class="text-gray-600 mb-4">Stunning harbor, iconic Opera House and beautiful beaches.
+                                </p>
+                                <div class="flex justify-between items-center">
+                                    <div class="flex items-center">
+                                        <i class="fas fa-star text-yellow-400"></i>
+                                        <span class="ml-1 text-gray-600">4.6</span>
+                                    </div>
+                                    <span class="text-blue-600 font-bold">From $1,299</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="slider-item flex-none w-full sm:w-1/2 md:w-1/3 lg:w-1/4 px-4">
+                        <div class="bg-white rounded-lg shadow-lg overflow-hidden destination-card h-full">
+                            <img src="https://source.unsplash.com/random/600x400/?barcelona" alt="Barcelona"
+                                class="w-full h-48 object-cover">
+                            <div class="p-6">
+                                <span
+                                    class="inline-block bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded-full uppercase font-semibold tracking-wide mb-2">Spain</span>
+                                <h3 class="text-xl font-bold mb-2">Barcelona</h3>
+                                <p class="text-gray-600 mb-4">Stunning architecture, vibrant culture and Mediterranean
+                                    beaches.</p>
+                                <div class="flex justify-between items-center">
+                                    <div class="flex items-center">
+                                        <i class="fas fa-star text-yellow-400"></i>
+                                        <span class="ml-1 text-gray-600">4.7</span>
+                                    </div>
+                                    <span class="text-blue-600 font-bold">From $849</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="slider-item flex-none w-full sm:w-1/2 md:w-1/3 lg:w-1/4 px-4">
+                        <div class="bg-white rounded-lg shadow-lg overflow-hidden destination-card h-full">
+                            <img src="https://source.unsplash.com/random/600x400/?cape-town" alt="Cape Town"
+                                class="w-full h-48 object-cover">
+                            <div class="p-6">
+                                <span
+                                    class="inline-block bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded-full uppercase font-semibold tracking-wide mb-2">South
+                                    Africa</span>
+                                <h3 class="text-xl font-bold mb-2">Cape Town</h3>
+                                <p class="text-gray-600 mb-4">Stunning landscapes, vibrant culture and diverse wildlife.
+                                </p>
+                                <div class="flex justify-between items-center">
+                                    <div class="flex items-center">
+                                        <i class="fas fa-star text-yellow-400"></i>
+                                        <span class="ml-1 text-gray-600">4.5</span>
+                                    </div>
+                                    <span class="text-blue-600 font-bold">From $1,199</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="slider-item flex-none w-full sm:w-1/2 md:w-1/3 lg:w-1/4 px-4">
+                        <div class="bg-white rounded-lg shadow-lg overflow-hidden destination-card h-full">
+                            <img src="https://source.unsplash.com/random/600x400/?rio-de-janeiro" alt="Rio de Janeiro"
+                                class="w-full h-48 object-cover">
+                            <div class="p-6">
+                                <span
+                                    class="inline-block bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded-full uppercase font-semibold tracking-wide mb-2">Brazil</span>
+                                <h3 class="text-xl font-bold mb-2">Rio de Janeiro</h3>
+                                <p class="text-gray-600 mb-4">Iconic beaches, vibrant culture and stunning landscapes.
+                                </p>
+                                <div class="flex justify-between items-center">
+                                    <div class="flex items-center">
+                                        <i class="fas fa-star text-yellow-400"></i>
+                                        <span class="ml-1 text-gray-600">4.6</span>
+                                    </div>
+                                    <span class="text-blue-600 font-bold">From $999</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <button id="prev-btn"
+                    class="absolute left-0 top-1/2 transform -translate-y-1/2 bg-white p-2 rounded-full shadow-lg z-10 ml-2 hover:bg-gray-100">
+                    <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7">
+                        </path>
+                    </svg>
+                </button>
+
+                <button id="next-btn"
+                    class="absolute right-0 top-1/2 transform -translate-y-1/2 bg-white p-2 rounded-full shadow-lg z-10 mr-2 hover:bg-gray-100">
+                    <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Dream Holiday Section with Parallax -->
+    <section id="about" class="py-16 parallax bg-cover bg-center"
+        style="background-image: url('https://source.unsplash.com/random/1920x1080/?travel');">
+        <div class="bg-black bg-opacity-50 py-20">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="max-w-3xl mx-auto text-center">
+                    <h2 class="text-3xl font-bold text-white mb-6">Your Dream Holiday Awaits!</h2>
+                    <p class="text-xl text-white mb-8">Let us take you on a journey to the most beautiful destinations
+                        around the world. Create memories that will last a lifetime.</p>
+                    <button
+                        class="bg-white hover:bg-gray-100 text-blue-600 font-bold py-3 px-8 rounded-full shadow-lg transition duration-300 transform hover:scale-105">
+                        Start Planning
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl font-bold text-center mb-12">What Our Travelers Say</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="bg-gray-50 p-6 rounded-lg shadow-md">
+                    <div class="flex items-center mb-4">
+                        <img src="https://randomuser.me/api/portraits/women/32.jpg" alt="Customer"
+                            class="w-12 h-12 rounded-full mr-4">
+                        <div>
+                            <h4 class="font-bold">Sarah Johnson</h4>
+                            <div class="flex text-yellow-400">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 italic">"Our trip to Bali was absolutely amazing! The accommodations were
+                        perfect, and the itinerary was well-planned. We'll definitely book with Wanderlust again!"</p>
+                </div>
+
+                <div class="bg-gray-50 p-6 rounded-lg shadow-md">
+                    <div class="flex items-center mb-4">
+                        <img src="https://randomuser.me/api/portraits/men/45.jpg" alt="Customer"
+                            class="w-12 h-12 rounded-full mr-4">
+                        <div>
+                            <h4 class="font-bold">Michael Chen</h4>
+                            <div class="flex text-yellow-400">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 italic">"The European tour exceeded all our expectations. The guides were
+                        knowledgeable, and the hotels were in perfect locations. Couldn't have asked for a better
+                        experience!"</p>
+                </div>
+
+                <div class="bg-gray-50 p-6 rounded-lg shadow-md">
+                    <div class="flex items-center mb-4">
+                        <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Customer"
+                            class="w-12 h-12 rounded-full mr-4">
+                        <div>
+                            <h4 class="font-bold">Emily Rodriguez</h4>
+                            <div class="flex text-yellow-400">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 italic">"Our honeymoon in the Maldives was a dream come true. The overwater
+                        bungalow was stunning, and the service was impeccable. Thank you for making our special trip so
+                        memorable!"</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter Section -->
+    <section class="py-16 bg-blue-600">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="max-w-3xl mx-auto text-center">
+                <h2 class="text-3xl font-bold text-white mb-6">Subscribe to Our Newsletter</h2>
+                <p class="text-xl text-white mb-8">Get exclusive deals, travel tips, and updates delivered straight to
+                    your inbox.</p>
+                <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                    <input type="email" placeholder="Enter your email address"
+                        class="px-4 py-3 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-300 w-full sm:w-auto">
+                    <button
+                        class="bg-white hover:bg-gray-100 text-blue-600 font-bold py-3 px-6 rounded-md shadow-lg transition duration-300 transform hover:scale-105">
+                        Subscribe
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white pt-16 pb-8">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
+                <div>
+                    <h3 class="text-xl font-bold mb-4">Wanderlust</h3>
+                    <p class="text-gray-400 mb-4">Making your travel dreams come true since 2010. We specialize in
+                        creating unforgettable experiences around the world.</p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-white">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white">
+                            <i class="fab fa-youtube"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div>
+                    <h3 class="text-xl font-bold mb-4">Quick Links</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white">Home</a></li>
+                        <li><a href="#destinations" class="text-gray-400 hover:text-white">Destinations</a></li>
+                        <li><a href="#deals" class="text-gray-400 hover:text-white">Deals & Offers</a></li>
+                        <li><a href="#about" class="text-gray-400 hover:text-white">About Us</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Contact Us</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h3 class="text-xl font-bold mb-4">Travel Services</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white">Flights</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Hotels</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Holiday Packages</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Cruises</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Car Rentals</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h3 class="text-xl font-bold mb-4">Contact Us</h3>
+                    <ul class="space-y-2 text-gray-400">
+                        <li class="flex items-start">
+                            <i class="fas fa-map-marker-alt mt-1 mr-3"></i>
+                            <span>123 Travel Street, Tourism City, Country</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-phone-alt mr-3"></i>
+                            <span>+1 234 567 8900</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-envelope mr-3"></i>
+                            <span>info@wanderlust.com</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="border-t border-gray-800 pt-8">
+                <div class="flex flex-col md:flex-row justify-between items-center">
+                    <p class="text-gray-400 text-sm mb-4 md:mb-0">© 2023 Wanderlust. All rights reserved.</p>
+                    <div class="flex space-x-6">
+                        <a href="#" class="text-gray-400 hover:text-white text-sm">Privacy Policy</a>
+                        <a href="#" class="text-gray-400 hover:text-white text-sm">Terms of Service</a>
+                        <a href="#" class="text-gray-400 hover:text-white text-sm">Cookie Policy</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Slider functionality
+        const slider = document.querySelector('.slider');
+        const prevBtn = document.getElementById('prev-btn');
+        const nextBtn = document.getElementById('next-btn');
+        const slideWidth = document.querySelector('.slider-item').offsetWidth + 32; // Width + padding
+
+        prevBtn.addEventListener('click', () => {
+            slider.scrollBy({ left: -slideWidth * 2, behavior: 'smooth' });
+        });
+
+        nextBtn.addEventListener('click', () => {
+            slider.scrollBy({ left: slideWidth * 2, behavior: 'smooth' });
+        });
+
+        // 3D Background for Hero Section
+        const canvas = document.getElementById('hero-canvas');
+        const renderer = new THREE.WebGLRenderer({ canvas, alpha: true, antialias: true });
+        renderer.setSize(window.innerWidth, window.innerHeight);
+
+        const scene = new THREE.Scene();
+        const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+        camera.position.z = 5;
+
+        // Create particles
+        const particlesGeometry = new THREE.BufferGeometry();
+        const particlesCount = 2000;
+
+        const posArray = new Float32Array(particlesCount * 3);
+
+        for (let i = 0; i < particlesCount * 3; i++) {
+            posArray[i] = (Math.random() - 0.5) * 10;
+        }
+
+        particlesGeometry.setAttribute('position', new THREE.BufferAttribute(posArray, 3));
+
+        const particlesMaterial = new THREE.PointsMaterial({
+            size: 0.02,
+            color: 0x3b82f6,
+            transparent: true,
+            opacity: 0.8
+        });
+
+        const particlesMesh = new THREE.Points(particlesGeometry, particlesMaterial);
+        scene.add(particlesMesh);
+
+        // Animation
+        function animate() {
+            requestAnimationFrame(animate);
+
+            particlesMesh.rotation.y += 0.001;
+            particlesMesh.rotation.x += 0.0005;
+
+            renderer.render(scene, camera);
+        }
+
+        animate();
+
+        // Resize handler
+        window.addEventListener('resize', () => {
+            camera.aspect = window.innerWidth / window.innerHeight;
+            camera.updateProjectionMatrix();
+            renderer.setSize(window.innerWidth, window.innerHeight);
+        });
+
+        // 3D effect for destination cards
+        const cards = document.querySelectorAll('.destination-card');
+
+        cards.forEach(card => {
+            card.addEventListener('mousemove', (e) => {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+
+                const centerX = rect.width / 2;
+                const centerY = rect.height / 2;
+
+                const rotateY = (x - centerX) / 20;
+                const rotateX = (centerY - y) / 20;
+
+                card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.03, 1.03, 1.03)`;
+            });
+
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) scale3d(1, 1, 1)';
+            });
+        });
+        document.addEventListener('DOMContentLoaded', function() {
+        const container = document.getElementById('nav-container');
+        const prevBtn = document.getElementById('nav-prev');
+        const nextBtn = document.getElementById('nav-next');
+        const itemWidth = 90; // Adjusted width for larger icons
+        
+        prevBtn.addEventListener('click', () => {
+            container.scrollBy({ left: -itemWidth, behavior: 'smooth' });
+        });
+        
+        nextBtn.addEventListener('click', () => {
+            container.scrollBy({ left: itemWidth, behavior: 'smooth' });
+        });
+        
+        container.addEventListener('scroll', function() {
+            prevBtn.style.display = container.scrollLeft <= 0 ? 'none' : 'block';
+            nextBtn.style.display = container.scrollLeft >= (container.scrollWidth - container.clientWidth) ? 'none' : 'block';
+        });
+        
+        prevBtn.style.display = 'none';
+    });
+
+    </script>
+</body>
+
+</html>
