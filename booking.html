@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Travel Booking Form</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-gray-100 min-h-screen flex items-center justify-center p-4">
+    <div class="bg-white rounded-lg shadow-lg p-6 w-full max-w-2xl space-y-6">
+        <div class="text-center">
+            <h1 class="text-3xl font-bold text-blue-600">Travel Booking Form</h1>
+            <p class="text-gray-600 mt-1">Fill out the form to book your dream vacation</p>
+        </div>
+
+        <form id="bookingForm" action="booking.php" method="post" class="space-y-6">
+            <!-- Personal Info -->
+            <div class="bg-blue-50 p-4 rounded-md space-y-4">
+                <h2 class="text-xl font-semibold text-blue-700">Personal Information</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <input type="text" name="fullName" placeholder="Full Name" required class="input  p-2 rounded-md">
+                    <input type="email" name="email" placeholder="Email Address" required class="input  p-2 rounded-md">
+                    <input type="tel" name="phone" placeholder="Phone Number" required class="input  p-2 rounded-md">
+                    <input type="text" name="address" placeholder="Address" required class="input  p-2 rounded-md">
+                </div>
+            </div>
+
+            <!-- Travel Details -->
+            <div class="bg-blue-50 p-4 rounded-md space-y-4">
+                <h2 class="text-xl font-semibold text-blue-700">Travel Details</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <select name="package" required class="input">
+                        <option value="">Select Package</option>
+                        <option value="budget">Budget Friendly</option>
+                        <option value="standard">Standard</option>
+                        <option value="premium">Premium</option>
+                        <option value="luxury">Luxury</option>
+                    </select>
+                    <input type="date" id="departureDate" name="departureDate" required class="input">
+                    <input type="date" id="returnDate" name="returnDate" required class="input">
+                    <input type="number" name="adults" min="1" placeholder="Number of Adults" required
+                        class="input p-2 rounded-md">
+                    <input type="number" name="children" min="0" placeholder="Number of Children"
+                        class="input p-2 rounded-md">
+                </div>
+            </div>
+
+            <!-- Additional Requirements -->
+            <div class="bg-blue-50 p-4 rounded-md space-y-4">
+                <h2 class="text-xl font-semibold text-blue-700">Additional Requirements</h2>
+
+                <div class="space-y-2">
+                    <label class="font-medium">Accommodation Preference</label>
+                    <div class="flex gap-4 flex-wrap">
+                        <label><input type="radio" name="accommodation" value="hotel" checked class="mr-1">Hotel</label>
+                        <label><input type="radio" name="accommodation" value="resort" class="mr-1">Resort</label>
+                        <label><input type="radio" name="accommodation" value="homestay" class="mr-1">Homestay</label>
+                    </div>
+                </div>
+
+                <div class="space-y-2">
+                    <label class="font-medium">Transportation</label>
+                    <div class="flex gap-4 flex-wrap">
+                        <label><input type="checkbox" name="transportation" value="flight" class="mr-1">Flight</label>
+                        <label><input type="checkbox" name="transportation" value="train" class="mr-1">Train</label>
+                        <label><input type="checkbox" name="transportation" value="bus" class="mr-1">Bus</label>
+                        <label><input type="checkbox" name="transportation" value="car" class="mr-1">Car Rental</label>
+                    </div>
+                </div>
+
+                <textarea name="specialRequests" rows="3" placeholder="Any special requests..."
+                    class="input"></textarea>
+            </div>
+
+            <!-- Terms & Submit -->
+            <div class="space-y-4">
+                <label class="flex items-start text-sm">
+                    <input id="terms" name="terms" type="checkbox" class="mt-1 mr-2" required>
+                    I agree to the <a href="#" class="text-blue-600 hover:underline mx-1">terms and conditions</a> and
+                    <a href="#" class="text-blue-600 hover:underline">privacy policy</a>
+                </label>
+
+                <div class="text-center">
+                    <button type="submit"
+                        class="px-6 py-3 bg-blue-600 text-white font-medium rounded-md hover:bg-blue-700 focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition">
+                        Book Now
+                    </button>
+                </div>
+            </div>
+        </form>
+
+
+    </div>
+
+</body>
+
+</html>
