@@ -29,14 +29,14 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         $mail->isSMTP();
         $mail->Host       = 'smtp.gmail.com';
         $mail->SMTPAuth   = true;
-        $mail->Username   = 'patrasagarika654@gmail.com'; // Your Gmail
-        $mail->Password   = 'jshf iluj zotb yatn';         // App password
+        $mail->Username   = 'srinivassupriya80@gmail.com'; // Your Gmail
+        $mail->Password   = 'ngaf qfmm dnob obax';         // App password
         $mail->SMTPSecure = 'tls';
         $mail->Port       = 587;
 
         // Sender & recipient
-        $mail->setFrom('patrasagarika654@gmail.com', 'Booking Form');
-        $mail->addAddress('patrasagarika654@gmail.com');
+        $mail->setFrom('srinivassupriya80@gmail.com', 'Booking Form');
+        $mail->addAddress('srinivassupriya80@gmail.com');
 
         // Email content
         $mail->isHTML(true);

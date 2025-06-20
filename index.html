@@ -178,7 +178,10 @@
             <div class="flex justify-between h-16">
                 <div class="flex items-center">
                     <a href="#" class="flex-shrink-0 flex items-center justify-between w-full">
-                        <span class="text-2xl font-bold text-blue-600">HIMASARA DMC PVT LTD</span>
+                        <span class="text-[6vw] sm:hidden font-bold leading-none text-blue-600">HIMASARA HOLIDAYS <br>
+                            DMC PVT LTD</span>
+                        <span class="text-[6vw] sm:text-xl font-bold leading-none text-blue-600">HIMASARA HOLIDAYS DMC
+                            PVT LTD</span>
                     </a>
                     <div class="hidden md:ml-6 md:flex md:space-x-8">
                         <a href="#"
@@ -228,6 +231,7 @@
     <!-- Secondary Navigation with Icons -->
     <div class="bg-[#D1EDFD] mb-[-10px] shadow-sm pt-16">
         <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative">
+            <h1 class="text-center font-bold text-xl sm:text-2xl text-blue-500 mt-4 tracking-widest">Our Services</h1>
             <!-- Left Arrow (Mobile Only) -->
             <button id="nav-prev"
                 class="md:hidden absolute left-2 top-1/2 transform -translate-y-1/2 bg-white rounded-full p-2 shadow-md z-10">
@@ -238,7 +242,7 @@
             </button>
 
             <!-- Navigation Items -->
-            <div class="flex overflow-x-hidden py-4 space-x-8 justify-between scroll-smooth" id="nav-container">
+            <div class="flex overflow-x-hidden pb-4 pt-1 space-x-8 justify-between scroll-smooth" id="nav-container">
                 <div class="travel-icon flex flex-col items-center p-2 rounded-lg cursor-pointer min-w-[80px]">
                     <div class="bg-blue-100  rounded-full">
                         <img src="images/flights1.png" class="w-10 h-10 rounded-full" alt="Flights">
@@ -436,6 +440,37 @@
                 <div class="carousel">
                     <div class="swiper mySwiper1">
                         <div class="swiper-wrapper">
+
+                            <!-- vetnam -->
+                            <div class="swiper-slide p-2">
+                                <div class="destination-card bg-white rounded-lg shadow-lg overflow-hidden">
+                                    <div class="relative h-56">
+                                        <img src="https://i.pinimg.com/736x/5f/1a/49/5f1a49c4d6fdd524d9bd1c918a9ca291.jpg"
+                                            alt="Vietnam" class="w-full h-full object-cover" />
+                                        <div class="destination-name absolute bottom-0 left-0 right-0 py-3 px-4">
+                                            <span class="text-white text-xl font-semibold">Vietnam</span>
+                                        </div>
+                                    </div>
+                                    <div class="p-4">
+                                        <p class="text-gray-600">
+                                            Discover the natural beauty, historic temples, and vibrant street life of
+                                            Vietnam.
+                                        </p>
+                                        <div class="mt-3 flex items-center text-sm text-blue-600">
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-1" fill="none"
+                                                viewBox="0 0 24 24" stroke="currentColor">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                    d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                    d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                                            </svg>
+                                            Vietnam
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+
                             <!-- London -->
                             <div class="swiper-slide p-2">
                                 <div class="destination-card bg-white rounded-lg shadow-lg overflow-hidden">
@@ -490,34 +525,8 @@
                                 </div>
                             </div>
 
-                            <!-- Phuket -->
-                            <div class="swiper-slide p-2">
-                                <div class="destination-card bg-white rounded-lg shadow-lg overflow-hidden">
-                                    <div class="relative h-56">
-                                        <img src="https://images.unsplash.com/photo-1589394815804-964ed0be2eb5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8cGh1a2V0JTIwbGFuZHNjYXBlfGVufDB8fDB8fHww&auto=format&fit=crop&w=800&q=60"
-                                            alt="Phuket" class="w-full h-full object-cover" />
-                                        <div class="destination-name absolute bottom-0 left-0 right-0 py-3 px-4">
-                                            <span class="text-white text-xl font-semibold ">Phuket</span>
-                                        </div>
-                                    </div>
-                                    <div class="p-4">
-                                        <p class="text-gray-600">Enjoy crystal clear waters and vibrant nightlife on
-                                            Thailand's largest island.</p>
-                                        <div class="mt-3 flex items-center text-sm text-blue-600">
-                                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-1" fill="none"
-                                                viewBox="0 0 24 24" stroke="currentColor">
-                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                                    d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                                    d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-                                            </svg>
-                                            Thailand
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                        
 
-                            <!-- Singapore -->
                             <!-- Singapore -->
                             <div class="swiper-slide p-2">
                                 <div class="destination-card bg-white rounded-lg shadow-lg overflow-hidden">
@@ -579,6 +588,19 @@
                                     </div>
                                 </div>
                             </div>
+
+                            <!-- Vietnam -->
+                <div class="swiper-slide bg-transparent">
+    <div class="single getcallback2">
+        <div class="global-img">
+            <img class="rounded-xl" src="https://i.pinimg.com/736x/1c/a2/69/1ca2698b47bdd7df34a7cc642990e3e2.jpg" alt="Vietnam" />
+        </div>
+        <div class="slide-data">
+            <span class="text-center">Vietnam</span>
+            <a href="booking.html">Book Now</a>
+        </div>
+    </div>
+</div>  
     
                             <!-- Bali -->
                             <div class="swiper-slide bg-transparent">
@@ -692,21 +714,6 @@
                                 </div>
                             </div>
 
-                            <!-- Bangkok -->
-                            <div class="swiper-slide">
-                                <div class="single getcallback2" data-bs-toggle="modal" data-bs-target="#getcallback"
-                                    place='Bangkok' product-type=''>
-                                    <div class="global-img">
-                                        <img class="rounded-xl"
-                                            src="https://riya-b2c.s3.ap-south-1.amazonaws.com/wp-content/uploads/2025/02/20250227_112602_home-tend-bangkok.jpg"
-                                            alt="Bangkok" />
-                                    </div>
-                                    <div class="slide-data">
-                                        <span class="text-center">Bangkok</span>
-                                        <a href="booking.html">Book Now</a>
-                                    </div>
-                                </div>
-                            </div>
 
                             <!-- Dubai -->
                             <div class="swiper-slide">
@@ -758,7 +765,7 @@
         </div>
 
         <!-- Swiper Carousel -->
-        <div class="swiper testimonialSwiper">
+        <div class="swiper ">
             <div class="swiper-wrapper pb-10">
                 <!-- Card 1 -->
                 <div class="swiper-slide">
@@ -1070,7 +1077,7 @@
                     </div>
                 </div>
             </div>
-            <div class="swiper-pagination"></div>
+            <!-- <div class="swiper-pagination"></div> -->
         </div>
     </section>
 
@@ -1153,7 +1160,7 @@
 
                         <div class="mb-6">
                             <label class="block text-gray-700 mb-2">Phone</label>
-                            <input name="phone" type="tel" placeholder="Enter your phone number"
+                            <input required name="phone" type="tel" placeholder="Enter your phone number"
                                 class="w-full border border-gray-300 rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-primary">
                         </div>
 

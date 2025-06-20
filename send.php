@@ -20,14 +20,14 @@ try {
     $mail->isSMTP();
     $mail->Host       = 'smtp.gmail.com';
     $mail->SMTPAuth   = true;
-    $mail->Username   = 'patrasagarika654@gmail.com'; // Your Gmail address
-    $mail->Password   = 'jshf iluj zotb yatn';         // App Password
+    $mail->Username   = 'srinivassupriya80@gmail.com'; // Your Gmail address
+    $mail->Password   = 'ngaf qfmm dnob obax';         // App Password
     $mail->SMTPSecure = 'tls';
     $mail->Port       = 587;
 
     // Sender & recipient
-    $mail->setFrom('patrasagarika654@gmail.com', 'Website Contact Form');
-    $mail->addAddress('patrasagarika654@gmail.com'); // You can change this to another receiver
+    $mail->setFrom('srinivassupriya80@gmail.com', 'Website Contact Form');
+    $mail->addAddress('srinivassupriya80@gmail.com'); // You can change this to another receiver
 
     // Content
     $mail->isHTML(true);
